@@ -18,5 +18,13 @@ def denise():
 def kat():
     return render_template("kat.html")
 
+@app.route('/hernandez')
+def hernandez():
+    return render_template("hernandez.html")
+
+@app.route('/ronio')
+def ronio():
+    return render_template("ronio.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
