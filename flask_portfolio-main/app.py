@@ -11,4 +11,4 @@ def kat():
     return render_template("kat.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True)FF
