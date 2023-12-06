@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile Page</title>
+    <style>
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background: burlywood;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: white;
+            padding: 20px;
+            max-width: 70%;
+            margin: 0 auto;
+        }
+
+        .profile {
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #fff;
+            padding: 20px;
+            background-color: rgb(120, 92, 137);
+        }
+
+        img {
+            float: left;
+            margin-right: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .rai-motto {
+            clear: left;
+            margin-top: 15%;
+        }
+
+        .rm-info {
+            margin-left: 30px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .centered-text {
+            text-align: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                font-size: 1rem;
+            }
+
+            .profile {
+                text-align: center;
+                padding: 20px;
+            }
+
+            img {
+                float: none;
+            }
+
+            .rm-info, .rai-motto {
+                position: static;
+                text-align: center;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-text">
+        <h1>Welcome to my Profile Page</h1>
+        <p><em>This is a simple profile page rendered using Flask's templating.</em></p>
+    </div>
+    <div class="profile">
+        <img src="https://github.com/RMAELILLA/rai/blob/main/rai.jpg?raw=true" width="370" height="370">
+        <div class="rm-info">
+            <h1>Ryza Mae Ronio</h1>
+            <p>Bachelor of Science in Computer Engineering</p>
+            <p>Data Structures and Algorithm</p>
+            <p>BSCpE 2-6</p>
+        </div>
+        <div class="rai-motto">
+            <h1><em>"Rai"</em></h1>
+            <p>Struggles are like stones in our way, we decide either we bring it together with us or pass through it.</p>
+        </div>
+    </div>
+</body>
+</html>
