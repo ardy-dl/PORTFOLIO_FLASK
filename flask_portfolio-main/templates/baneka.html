@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+    
+body{
+    background: #d4a7e8;
+}
+
+
+.title {
+    font-family: 'Orbitron';
+    position: absolute;
+    top: -0.01%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: rgb(0, 0, 0); 
+}
+
+.name{
+    font-family: 'Orbitron';
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: 700;
+    color: rgb(0, 0, 0); 
+}
+
+.content{
+    margin-top: 170px;
+    font-family: 'Orbitron';
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(0, 0, 0); 
+}
+
+.topic{
+    color: rgb(0, 0, 0);
+    font-size:20px;
+}
+
+.parent-container {
+    text-align: center; 
+    align-items: center;
+    justify-content: center;
+}
+
+.column {
+    float: left;
+    width: 13%;
+    padding: 50px;
+    margin-top: -0.001%;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    margin-top: -20px;
+}
+
+.column img {
+    margin-top: 20px;
+    top: -10%;
+    width: 100%; 
+    height: auto; 
+    max-width: 100%; 
+    max-height: 100%; 
+}
+
+
+</style>
+</head>
+<body>
+<!-- MAIN CONTENT-->
+<div class="main-content">
+    <h2 class="title">PROFILE</h2>
+</div>
+
+<div class="parent-container">
+    <div class="row">
+        <div class="column">
+            <img src="{{ url_for('static', filename= 'baneka.png')}}" alt="Image 1">
+            <p class="name">LOBUSTA, VANICA O.</p>
+            <p class="content">
+              <span class="topic">Course: </span>Bachelor of Science in Computer Engineering<br>
+              <br>
+              <span class="topic">School: </span>Polytechnic University of the Philippines<br>
+              <br>
+              <span class="topic">Birthday:  </span> November. 29, 2002<br>
+              <br>
+              <span class="topic">Age:  </span> 21 years old<br>
+              <br>
+              <span class="topic">Zodiac Sign:  </span> Sagittarius
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
