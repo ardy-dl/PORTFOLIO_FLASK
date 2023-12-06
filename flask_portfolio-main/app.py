@@ -36,7 +36,7 @@ def baneka():
 
 @app.route('/jiro')
 def jiro():
-    return render_template("baneka.html")
+    return render_template("jiro.html")
 
 @app.route('/contact')
 def contact():
