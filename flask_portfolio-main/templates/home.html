@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    * {
+        font-family: Poppins, sans-serif;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .group-profile {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 150px;
+      margin: 5px;
+      margin-top: 30px;
+      text-align: center;
+      font-family: arial;
+      font-size: 10px;
+    }
+
+
+    a span {
+        position: absolute;
+    }   
+    
+    .title {
+      color: grey;
+      font-size: 12px;
+    }
+    
+    button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 12px;
+    }
+    
+    a {
+      text-decoration: none;
+      font-size: 12px;
+      color: black;
+    }
+    
+    button:hover, a:hover {
+      opacity: 0.7;
+    }
+
+    .lab-file {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 20px;
+        }
+
+    .course-box {
+        height: 300px;
+        width: 450px;
+        display:flex;
+        border-radius: 10px;
+        background-color: #FFFF;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        transition: ease 0.3s;
+        cursor: pointer;
+        margin-left: 25px;
+    }
+
+    .course-box:hover {
+        transform: scale(1.05);
+    }
+
+    .course-image {
+        border-radius: 10px 10px 0 0;
+        width: 500px;
+        max-width: 100%;
+        height: 220px;
+    }
+
+    .course-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 5px 5px;
+    }
+
+    .course-type {
+        font-size: 15px;
+        padding-left: 10px;
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2 style="text-align:center">Group 1 | Data Structure and Algorithm Portfolio</h2>
+    </div>
+    <br>
+    <div class="group-lab">
+        <h3 style="text-align: center">Laboratories</h3>
+        <div class="lab-file">
+            <div class="course-box">
+                <a href="#"><img class ="course-image" image src="{{ url_for('static', filename= 'search-cover.png')}}" width="50%">
+                <p class="course-title">SEARCH ALGORITHMS</p>
+                <p class="course-type">Lab Activity 1</p>
+                </a>
+            </div>
+            <div class="course-box">
+                <a href="#"><img class ="course-image" image src="{{ url_for('static', filename= 'stack-cover.png')}}" width="50%">
+                <p class="course-title">STACK</p>
+                <p class="course-type">Lab Activity 2</p>
+                </a>
+            </div>
+            <div class="course-box">
+                <a href="#"><img class ="course-image" image src="{{ url_for('static', filename= 'qdq-cover.jpg')}}" width="50%">
+                <p class="course-title">QUEUES AND DEQUEUES</p>
+                <p class="course-type">Lab Activity 3</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>    
+    <h3 style="text-align:center">Programmers' Profile</h3>
+    <div class="group-profile">
+        <div class="card">
+            <img src="https://th.bing.com/th/id/R.8e2c571ff125b3531705198a15d3103c?rik=muXZvm3dsoQqwg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-person-icon-png-people-person-user-icon-2240.png&ehk=MfHYkGonqy7I%2fGTKUAzUFpbYm9DhfXA9Q70oeFxWmH8%3d&risl=&pid=ImgRaw&r=0" alt="Image" style="width:100%">
+        <h2>Angel Co</h2>
+        <p class="title">Computer Engineering</p>
+        <p>Polytechnic University of the Philippines</p>
+        <div style="margin: 15px 0;">
+            <a href="#"><i class="fa fa-facebook"></i></a> 
+            <a href="#"><i class="fa fa-instagram"></i></a> 
+            <a href="#"><i class="fa fa-linkedin"></i></a>  
+        </div>
+        <p><button>Contact</button></p>
+        </div>
+        <div class="card">
+            <img src="https://th.bing.com/th/id/R.8e2c571ff125b3531705198a15d3103c?rik=muXZvm3dsoQqwg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-person-icon-png-people-person-user-icon-2240.png&ehk=MfHYkGonqy7I%2fGTKUAzUFpbYm9DhfXA9Q70oeFxWmH8%3d&risl=&pid=ImgRaw&r=0" alt="Image" style="width:100%">
+            <h2>Christian Budoy</h2>
+            <p class="title">Computer Engineering</p>
+            <p>Polytechnic University of the Philippines</p>
+            <div style="margin: 15px 0;">
+            <a href="#"><i class="fa fa-facebook"></i></a> 
+            <a href="#"><i class="fa fa-instagram"></i></a> 
+            <a href="#"><i class="fa fa-linkedin"></i></a>  
+            </div>
+            <p><button>Contact</button></p>
+        </div>
+        <div class="card">
+            <img src="https://th.bing.com/th/id/R.8e2c571ff125b3531705198a15d3103c?rik=muXZvm3dsoQqwg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-person-icon-png-people-person-user-icon-2240.png&ehk=MfHYkGonqy7I%2fGTKUAzUFpbYm9DhfXA9Q70oeFxWmH8%3d&risl=&pid=ImgRaw&r=0" alt="Image" style="width:100%">
+            <h2>Dan Hernandez</h2>
+            <p class="title">Computer Engineering</p>
+            <p>Polytechnic University of the Philippines</p>
+            <div style="margin: 15px 0;">
+            <a href="#"><i class="fa fa-facebook"></i></a> 
+            <a href="#"><i class="fa fa-instagram"></i></a> 
+            <a href="#"><i class="fa fa-linkedin"></i></a>  
+            </div>
+            <p><button>Contact</button></p>
+        </div>
+        <div class="card">
+            <img src="https://th.bing.com/th/id/R.8e2c571ff125b3531705198a15d3103c?rik=muXZvm3dsoQqwg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-person-icon-png-people-person-user-icon-2240.png&ehk=MfHYkGonqy7I%2fGTKUAzUFpbYm9DhfXA9Q70oeFxWmH8%3d&risl=&pid=ImgRaw&r=0" alt="Image" style="width:100%">
+            <h2>Denise De Leon</h2>
+            <p class="title">Computer Engineering</p>
+            <p>Polytechnic University of the Philippines</p>
+            <div style="margin: 15px 0;">
+            <a href="#"><i class="fa fa-facebook"></i></a> 
+            <a href="#"><i class="fa fa-instagram"></i></a> 
+            <a href="#"><i class="fa fa-linkedin"></i></a>  
+            </div>
+            <a href="/profile"><p><button>Contact</button></p></a>
+        </div>
+        <div class="card">
+            <img src="https://th.bing.com/th/id/R.8e2c571ff125b3531705198a15d3103c?rik=muXZvm3dsoQqwg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-person-icon-png-people-person-user-icon-2240.png&ehk=MfHYkGonqy7I%2fGTKUAzUFpbYm9DhfXA9Q70oeFxWmH8%3d&risl=&pid=ImgRaw&r=0" alt="Image" style="width:100%">
+            <h2>Jiro Ybañez</h2>
+            <p class="title">Computer Engineering</p>
+            <p>Polytechnic University of the Philippines</p>
+            <div style="margin: 15px 0;">
+            <a href="#"><i class="fa fa-facebook"></i></a> 
+            <a href="#"><i class="fa fa-instagram"></i></a> 
+            <a href="#"><i class="fa fa-linkedin"></i></a>  
+            </div>
+            <p><button>Contact</button></p>
+        </div>
+        <div class="card">
+            <a href="{{ url_for('kat')}}">
+                <img src="{{ url_for('static', filename= 'ricci.jpg')}}" alt="Image" style="width:100%">
+            </a>
+            <h2>Katrina Batin</h2>
+            <p class="title">Computer Engineering</p>
+            <p>Polytechnic University of the Philippines</p>
+            <div style="margin: 15px 0;">
+            <a href="#"><i class="fa fa-facebook"></i></a> 
+            <a href="#"><i class="fa fa-instagram"></i></a> 
+            <a href="#"><i class="fa fa-linkedin"></i></a>  
+            </div>
+            <p><button>Contact</button></p>
+        </div>
+        <div class="card">
+            <img src="https://th.bing.com/th/id/R.8e2c571ff125b3531705198a15d3103c?rik=muXZvm3dsoQqwg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-person-icon-png-people-person-user-icon-2240.png&ehk=MfHYkGonqy7I%2fGTKUAzUFpbYm9DhfXA9Q70oeFxWmH8%3d&risl=&pid=ImgRaw&r=0" alt="Image" style="width:100%">
+            <h2>Ryza Ronio</h2>
+            <p class="title">Computer Engineering</p>
+            <p>Polytechnic University of the Philippines</p>
+            <div style="margin: 15px 0;">
+            <a href="#"><i class="fa fa-facebook"></i></a> 
+            <a href="#"><i class="fa fa-instagram"></i></a> 
+            <a href="#"><i class="fa fa-linkedin"></i></a>  
+            </div>
+            <p><button>Contact</button></p>
+        </div>
+        <div class="card">
+            <img src="https://th.bing.com/th/id/R.8e2c571ff125b3531705198a15d3103c?rik=muXZvm3dsoQqwg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fpng-user-icon-person-icon-png-people-person-user-icon-2240.png&ehk=MfHYkGonqy7I%2fGTKUAzUFpbYm9DhfXA9Q70oeFxWmH8%3d&risl=&pid=ImgRaw&r=0" alt="Image" style="width:100%">
+            <h2>Vanica Lobusta</h2>
+            <p class="title">Computer Engineering</p>
+            <p>Polytechnic University of the Philippines</p>
+            <div style="margin: 15px 0;">
+            <a href="#"><i class="fa fa-facebook"></i></a> 
+            <a href="#"><i class="fa fa-instagram"></i></a> 
+            <a href="#"><i class="fa fa-linkedin"></i></a>  
+            </div>
+            <p><button>Contact</button></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>
+    My Personal Website
+</title>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'style.css')}}">
+
+</head>
+
+<body class="Main">
+    <div class='profile-card'>
+        <div class="card-header">
+            <div class="pic">
+                 <image src="{{ url_for('static', filename= 'ricci.jpg')}}">
+             </div>
+        <div class="name">Katrina Ricci Batin</div>  
+        <div class="desc">BSCPE 2-6</div> 
+        <br>
+        <div class="subject">DATA STRUCTURES AND ALGORITHMS</div> 
+            </br>
+        <div class="sm">
+            <a href="https://www.facebook.com/riccibatin" class="fab fa-facebook-f"></a>
+            <a href="https://www.instagram.com/hella_rixx/" class="fab fa-instagram"></a>
+            <a href="https://www.youtube.com/@katrinariccibatin" class="fab fa-youtube"></a>
+        </div> 
+        <a href="AboutMe.html" class="contact-btn">About Me</a>
+
+        </div>
+        <div class="card-footer">
+            "Every line of code you write is a step toward a brighter future."
+        </div>
+
+       
+</body>
