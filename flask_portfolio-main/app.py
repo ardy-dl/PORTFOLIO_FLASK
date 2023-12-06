@@ -30,5 +30,9 @@ def ronio():
 def ck():
     return render_template('ck.html')
 
+@app.route('/searchalgo')
+def kat():
+    return render_template("searchalgo.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
