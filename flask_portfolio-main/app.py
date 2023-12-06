@@ -25,6 +25,10 @@ def hernandez():
 @app.route('/ronio')
 def ronio():
     return render_template("ronio.html")
+    
+@app.route('/ck')
+def ck():
+    return render_template('ck.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
