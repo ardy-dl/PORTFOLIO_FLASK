@@ -43,7 +43,7 @@ def contact():
     return render_template("bnkcontact.html")
 
 @app.route('/searchalgo')
-def kat():
+def searchalgo():
     return render_template("searchalgo.html")
 
 if __name__ == "__main__":
