@@ -5,19 +5,19 @@ class Node:
 
 class Stack:
     def __init__(self):
-        self.head = None
+        self.top = None
         self.size = 0
 
     def push(self, data):
         new_node = Node(data)
-        new_node.next = self.head
-        self.head = new_node
+        new_node.next = self.top
+        self.top = new_node
         self.size += 1
 
     def pop(self):
         if not self.is_empty():
-            popped_item = self.head.data
-            self.head = self.head.next
+            popped_item = self.top.data
+            self.top = self.top.next
             self.size -= 1
             return popped_item
         else:
@@ -25,7 +25,7 @@ class Stack:
 
     def peek(self):
         if not self.is_empty():
-            return self.head.data
+            return self.top.data
         else:
             raise IndexError("peek from an empty stack")
 
