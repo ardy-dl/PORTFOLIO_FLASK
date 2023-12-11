@@ -19,7 +19,7 @@ def ternary_search(arr, target):
         else:
             low, high = mid1 + 1, mid2 - 1
 
-    return -1
+    raise IndexError(f"Target {target} not found in the array.")
 
 '''def ternary_search
 numbers = list(range(1, 1001))
