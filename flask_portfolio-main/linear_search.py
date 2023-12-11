@@ -8,7 +8,7 @@ def linear_search(arr, target):
             elapsed_time = (time.time() - start_time) * 1000
             return i
 
-    return -1
+    raise IndexError(f"Target {target} not found in the array.")
 
 '''#def linear_search
 numbers = list(range(1, 1001))
