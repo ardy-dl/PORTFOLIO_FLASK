@@ -32,6 +32,9 @@ def exponential_search(arr, target):
     result = binary_search(arr, target, 0, min(i, n) - 1)
     elapsed_time = (time.time() - start_time) * 1000
 
+    if result == -1:
+        raise IndexError(f"Target {target} not found in the array.")
+        
     return result
 
 '''#def exponential_search
