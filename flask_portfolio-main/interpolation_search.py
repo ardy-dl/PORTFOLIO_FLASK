@@ -15,7 +15,8 @@ def interpolation_search(arr, target):
         else:
             high = pos - 1
 
-    return -1
+    raise IndexError(f"Target {target} not found in the array.")
+
 
 ''''#def interpolation_search
 numbers = list(range(1, 1001))
