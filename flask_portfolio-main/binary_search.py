@@ -15,7 +15,7 @@ def binary_search(array, target, low, high):
         else:
             high = mid - 1
 
-    return -1
+    raise IndexError(f"Target {target} not found in the array.")
 
 '''def binary_search
 numbers = list(range(1, 10001))
