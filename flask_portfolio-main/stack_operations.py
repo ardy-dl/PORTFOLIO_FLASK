@@ -10,16 +10,18 @@ class Stack:
 
     def push(self, data):
         new_node = Node(data)
-        new_node.next = self.top
+        if self.top:
+            new_node.next = self.top
         self.top = new_node
         self.size += 1
 
     def pop(self):
         if not self.is_empty():
-            popped_item = self.top.data
+            popped_node = self.top.data
             self.top = self.top.next
+            popped_node.next = None
             self.size -= 1
-            return popped_item
+            return popped_node.data
         else:
             raise IndexError("pop from an empty stack")
 
