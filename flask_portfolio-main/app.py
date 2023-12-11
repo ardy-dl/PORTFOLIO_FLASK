@@ -95,8 +95,13 @@ def small_array():
                 result = ternary_search(array, target)
 
             return render_template("small_array.html", result=result, search_type=search_type, execution_time=execution_time, test_data=test_data)
+        
         except ValueError:
             return render_template("small_array.html", error="Invalid input. Ensure the array and target are integers.")
+        except IndexError as e:
+            return render_template("small_array.html", error=f"IndexError: {str(e)} Please provide a valid target within the range of the array.")
+        except Exception as e:
+            return render_template("small_array.html", error=f"An unexpected error occurred: {str(e)}")
 
     return render_template("small_array.html", test_data=test_data)
 
@@ -142,8 +147,13 @@ def medium_array():
                 result = ternary_search(array, target)
 
             return render_template("medium_array.html", result=result, search_type=search_type, execution_time=execution_time, test_data=test_data)
+        
         except ValueError:
             return render_template("medium_array.html", error="Invalid input. Ensure the array and target are integers.")
+        except IndexError as e:
+            return render_template("medium_array.html", error=f"IndexError: {str(e)} Please provide a valid target within the range of the array.")
+        except Exception as e:
+            return render_template("medium_array.html", error=f"An unexpected error occurred: {str(e)}")
 
     return render_template("medium_array.html", test_data=test_data)
 
@@ -188,8 +198,13 @@ def large_array():
                 result = ternary_search(array, target)
 
             return render_template("large_array.html", result=result, search_type=search_type, execution_time=execution_time, test_data=test_data)
+        
         except ValueError:
             return render_template("large_array.html", error="Invalid input. Ensure the array and target are integers.")
+        except IndexError as e:
+            return render_template("large_array.html", error=f"IndexError: {str(e)} Please provide a valid target within the range of the array.")
+        except Exception as e:
+            return render_template("large_array.html", error=f"An unexpected error occurred: {str(e)}") 
 
     return render_template("large_array.html", test_data=test_data)
 
