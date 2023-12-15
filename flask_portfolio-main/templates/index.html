@@ -31,8 +31,13 @@
                 </button>
             </form>
 
-
-
+        {% if infix_expression %}
+        
+        <p>Infix Expression: {{ infix_expression }}</p>
+        <p>Postfix Expression: {{ postfix_expression }}</p>
+        
+        {% endif %}
+        
 <footer>
         &copy; 2023 BSCOE 2-6 (Group 1). All rights reserved.
     </div>
