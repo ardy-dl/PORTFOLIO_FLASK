@@ -7,6 +7,7 @@ from jump_search import jump_search
 from interpolation_search import interpolation_search
 from ternary_search import ternary_search
 from data_set import generate_sorted_list
+from infix_to_postfix import infix_to_postfix
 
 app = Flask(__name__)
 
@@ -225,7 +226,21 @@ def search():
         "iterative_search_result": result_iterative,
     })
 
+@app.route('/index')
+def index():
+    return render_template("index.html")
 
+@app.route('/convert', methods=['POST'])
+def convert():
+    infix_expression = request.form['infix_expression']
+    postfix_expression = infix_to_postfix(infix_expression)
+    return render_template('index.html', infix_expression=infix_expression, postfix_expression=postfix_expression)
+
+def infix_to_postfix(infix_expression):
+    # Your infix to postfix conversion logic here
+    # Implement the Shunting Yard Algorithm or use a library like 'pythonds' or 'pyparsing'
+    # Return the postfix expression
+    pass
 
 if __name__ == "__main__":
     app.run(debug=True)
