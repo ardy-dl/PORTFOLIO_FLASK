@@ -2,110 +2,185 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-    
-body{
-    background: #d4a7e8;
-}
-
-
-.title {
-    font-family: 'Orbitron';
-    position: absolute;
-    top: -0.01%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 30px;
-    color: rgb(0, 0, 0); 
-}
-
-.name{
-    font-family: 'Orbitron';
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 30px;
-    font-weight: 700;
-    color: rgb(0, 0, 0); 
-}
-
-.content{
-    margin-top: 170px;
-    font-family: 'Orbitron';
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 15px;
-    font-weight: 700;
-    color: rgb(0, 0, 0); 
-}
-
-.topic{
-    color: rgb(0, 0, 0);
-    font-size:20px;
-}
-
-.parent-container {
-    text-align: center; 
-    align-items: center;
-    justify-content: center;
-}
-
-.column {
-    float: left;
-    width: 13%;
-    padding: 50px;
-    margin-top: -0.001%;
-}
-
-.row {
-    display: flex;
-    justify-content: center;
-    margin-top: -20px;
-}
-
-.column img {
-    margin-top: 20px;
-    top: -10%;
-    width: 100%; 
-    height: auto; 
-    max-width: 100%; 
-    max-height: 100%; 
-}
-
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>My Website</title>
 </head>
+
 <body>
-<!-- MAIN CONTENT-->
-<div class="main-content">
-    <h2 class="title">PROFILE</h2>
-</div>
-
-<div class="parent-container">
-    <div class="row">
-        <div class="column">
-            <img src="{{ url_for('static', filename= 'baneka.png')}}" alt="Image 1">
-            <p class="name">LOBUSTA, VANICA O.</p>
-            <p class="content">
-              <span class="topic">Course: </span>Bachelor of Science in Computer Engineering<br>
-              <br>
-              <span class="topic">School: </span>Polytechnic University of the Philippines<br>
-              <br>
-              <span class="topic">Birthday:  </span> November. 29, 2002<br>
-              <br>
-              <span class="topic">Age:  </span> 21 years old<br>
-              <br>
-              <span class="topic">Zodiac Sign:  </span> Sagittarius
-            </p>
+  <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1>Vanica<span> Ocampo </span>Lobusta</h1>
+          </a>
         </div>
+        <div class="nav-list">
+          <ul>
+            <li><a href="#hero" data-after="Home">Home</a></li>
+            <li><a href="#profile" data-after="Profile">Profile</a></li>
+            <li><a href="#education" data-after="Education">Education</a></li>
+            <li><a href="#contact" data-after="Contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-</div>
+  </section>
+  <!-- End Header -->
 
+
+  <!-- Hero Section  -->
+  <section id="hero">
+    <div class="hero container">
+      <div>
+        <h1>Welcome! <span></span></h1>
+        <h1>I am Aki. <span></span></h1>
+        <h1>Learn about me. <span></span></h1>
+        <a href="https://m.me/bunnykaaaa" type="button" class="cta" target="_blank">Need someone to talk to?</a>
+      </div>
+    </div>
+  </section>
+  <!-- End Hero Section  -->
+
+  <!-- Profile Section -->
+  <section id="profile">
+    <div class="profile container">
+      <div class="profile-top">
+        <h1 class="section-title">Pro<span>f</span>ile</h1>
+        <p>You are currently browsing through Vanica Ocampo Lobusta's Profile. <br> Are you here to gather some interesting facts about her?<br> I am your best guide!</p>
+      </div>
+      <div class="profile-bottom">
+        <div class="profile-item">
+          <h2>A GENTLE REMINDER <br>-Aki.</h2>
+          <p>I've always had this belief about the law of the universe. You never have to force things, whatever is meant for you will find its way to you.<br>
+          "Murphy's Law." Anything that can go wrong, will go wrong. I'm always reminded by the movie Interstellar whenever I hear about this phrase. I would also like to tell you, stop worrying about things that you cannot control.<br>
+          Just keep doing things that makes you feel alive. Life is too short to waste time doing things that kills you.<BR>
+          You are NOT alone.
+          </p>
+        </div>
+        <div class="profile-item">
+          <div class="icon"><img src= "img/bunnyka.jpg" /></div>
+          <h2>FULL NAME</h2>
+          <p>Vanica Ocampo Lobusta</p>
+          <h2>NICKNAME</h2>
+          <p>Aki</p>
+        </div>
+        <div class="profile-item">
+          <div class="icon"><img src="img/me2.jpg" /></div>
+          <h2>BIRTH ABOUTS</h2>
+          <p>20 years old<br>November.29, 2002<br>General. Trias, Cavite<br>Sagittarius</p>
+        </div>
+        <div class="profile-item">
+          <div class="icon"><img src="img/me3.jpg" /></div>
+          <h2>HOBBIES</h2>
+          <p>SINGING<br> DANCING<br> LISTENING TO VARIETY OF MUSIC (Pop, Metal, Alternative-Rock, RnB, Rap, Punk, Country)<br> READING SELF-HELP BOOKS<br> WATCHING MOVIES (preferrably SCI-FI, MYSTERY, EARLY 2000s DRAMA)<br> PHOTOGRAPHY (Moons and Sunsets)</p>
+        </div>
+        <div class="profile-item">
+          <div class="icon"><img src="img/me4.jpg" /></div>
+          <h2>OTHERS</h2>
+          <p>YOUNGEST AMONG SIBLINGS<br>HAVE ONE OLDER SISTER<br> HAVE A DOG NAMED "LUBI"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Profile Section -->
+
+  <!-- Education Section -->
+  <section id="education">
+    <div class="education container">
+      <div class="education-top">
+        <h1 class="section-title">Educ<span>a</span>tion</h1>
+        <p>You are currently browsing through Vanica Ocampo Lobusta's Educational background.</p>
+      </div>
+      <div class="education-bottom">
+        <div class="education-item">
+          <div class="icon"><img src= "img/puplogo.png" /></div>
+          <h2>POLYTECHNIC UNIVERSITY OF THE PHILIPPINES - Sta. Mesa, Manila</h2>
+          <p>2nd Year College<br>Bachelor of Science in Computer Engineering</p>
+        </div>
+        <div class="education-item">
+          <div class="icon"><img src="img/tip.png" /></div>
+          <h2>TECHNOLOGICAL INSTITUTE OF THE PHILIPPINES</h2>
+          <p>1st Year College<br>Bachelor of Science in Civil Engineering<br>VPAA's Lister (1st and 2nd Sem)</p>
+        </div>
+        <div class="education-item">
+          <div class="icon"><img src="img/pcu1.jpg" /></div>
+          <h2>PHILIPPINE CHRISTIAN UNIVERSITY - Dasmarinas, Cavite</h2>
+          <p>Senior High Cchool<br>Graduated with Honors</p>
+        </div>
+        <div class="education-item">
+          <div class="icon"><img src="img/feb.jpg" /></div>
+          <h2>FRANCISCO E. BARZAGA INTEGRATED HIGH SCHOOL</h2>
+          <p>Junior High School<br>Graduated with Honors</p>
+        </div>
+        <div class="education-item">
+          <div class="icon"><img src="img/prkln.jpg" /></div>
+          <h2>PARKLANE ELEMENTARY SCHOOL</h2>
+          <p>Elementary<br> Graduated with Honors</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Projects Section -->
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact container">
+      <div>
+        <h1 class="section-title">Contact <span>info</span></h1>
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="icon"><img src="img/phone.png" /></div>
+          <div class="contact-info">
+            <h1>Phone</h1>
+            <h2>+63 906 357 3246</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="img/email.png" /></div>
+          <div class="contact-info">
+            <h1>Email</h1>
+            <h2>vanicalobusta@gmail.com</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="img/address.png" /></div>
+          <div class="contact-info">
+            <h1>Address</h1>
+            <h2>General. Trias, Cavite</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section -->
+
+  <!-- Footer -->
+  <section id="footer">
+    <div class="footer container">
+      <div class="brand">
+      </div>
+      <h2>SOCIAL MEDIA ACCOUNTS</h2>
+      <div class="social-icon">
+        <div class="social-item">
+          <a href="https://www.facebook.com/bunnykaaaa?mibextid=ZbWKwL" target="_blank">
+            <img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" />
+          </a>
+        </div>
+        <div class="social-item">
+          <a href="https://instagram.com/bunnyka0_o?igshid=ZDdkNTZiNTM=" target="_blank">
+            <img src="https://img.icons8.com/bubbles/100/000000/instagram-new.png" />
+          </a>
+        </div>
+      </div>
+      <p>Bunnyka. All rights reserved.</p>
+    </div>
+  </section>
+  <!-- End Footer -->
 </body>
+
 </html>
