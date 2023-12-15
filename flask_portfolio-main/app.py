@@ -233,14 +233,8 @@ def index():
 @app.route('/convert', methods=['POST'])
 def convert():
     infix_expression = request.form['infix_expression']
-    postfix_expression = infix_to_postfix(infix_expression)
+    postfix_expression = stack_operations(infix_expression)
     return render_template('index.html', infix_expression=infix_expression, postfix_expression=postfix_expression)
-
-def infix_to_postfix(infix_expression):
-    # Your infix to postfix conversion logic here
-    # Implement the Shunting Yard Algorithm or use a library like 'pythonds' or 'pyparsing'
-    # Return the postfix expression
-    pass
 
 if __name__ == "__main__":
     app.run(debug=True)
