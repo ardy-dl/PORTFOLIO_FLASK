@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', 'Orbitron', Arial, sans-serif;
+    background-color: black;
+}
+
+.main-content {
+    font-family: 'Orbitron';
+    
+}
+
+.itp{
+    text-align: center;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 50px;
+}
+
+.to{
+    color: red;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 500;
+    margin-left: 480px;
+    margin-bottom: 10px;
+    color:  rgb(180, 100, 100);
+}
+
+input {
+    margin-bottom: 50px;
+    margin-left: 480px;
+    width: 20%;
+    outline: none;
+}
+
+input:focus {
+    border-bottom: 5px solid rgb(0, 0, 0);
+}
+/* Content */
+.title{
+    color: rgb(180, 100, 100);
+    text-align: center;
+}
+
+.def{
+    width: 50%;
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+/* Style the submit button */
+button[type="submit"] {
+    display: flex;
+    border: none;
+    font-family: 'Orbitron';
+    background-color:white; 
+    color: black; 
+    padding: 10px 20px; 
+    width:10%;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center !important;
+    transition: background-color 0.3s ease; 
+    margin-left: 580px;
+    align-items: center;
+    justify-content: center;
+}
+
+button[type="submit"]:hover {
+    background-color: #ff0000;
+}
+
+/* FOOTER STARTS HERE */
+
+footer {
+    color: white;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #555;
+    text-align: center;
+    font-size: 15px;
+}
+
+.copyright {
+    font-family: "Open Sans", sans-serif;
+    justify-content: center;
+    margin-top: 5px;
+}
