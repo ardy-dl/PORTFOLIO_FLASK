@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Centered and Horizontal Bootstrap Navbar</title>
+    <style>
+        * {
+            font-family: 'Libre Baskerville', serif;
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: #f0f0f0;
+        }
+
+        .navbar-logo {
+            margin-left: 100px; /* Adjust the margin to move the logo to the right */
+        }
+
+        .navbar-nav {
+            padding-left: 700px; /* Center the navbar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar-nav .nav-item {
+            text-align: center; /* Center the text within each nav item */
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            text-transform: uppercase; /* Make text uppercase */
+            color: #ffffff; /* Set text color to white */
+        }
+
+        .navbar {
+            background-color: #000000; /* Set the background color to jet black */ 
+        }
+
+        @media (max-width: 767.98px) {
+            .navbar-collapse {
+                padding-left: 0 !important; /* Remove left padding when collapsed */
+            }
+        }
+
+        /* Styling for the cover photo */
+        .cover-photo {
+            background-image: url('/static/Portfolio.jpg'); /* Replace 'your-cover-photo.jpg' with the actual path to your cover photo */
+            background-size: cover;
+            background-position: center;
+            height: 400px; /* Adjust the height as needed */
+        }
+
+        .intro-section {
+            font-size: 15px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .intro-title {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .container {
+        width: 100%;
+    }
+        /*projects*/
+        .lab-file {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 20px;
+        }
+
+        .course-box {
+            height: 300px;
+            width: 450px;
+            display:flex;
+            border-radius: 10px;
+            background-color: #FFFF;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            transition: ease 0.3s;
+            cursor: pointer;
+            margin-left: 25px;
+        }
+
+        .course-box:hover {
+            transform: scale(1.05);
+        }
+
+        .course-image {
+            border-radius: 10px 10px 0 0;
+            width: 500px;
+            max-width: 100%;
+            height: 220px;
+        }
+
+        .course-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0px 5px 0px 5px;
+            padding: 5px;
+        }
+
+        .course-type {
+            font-size: 15px;
+            padding-left: 10px;
+            padding: 0px 0px 0px 5px;
+            margin: 0px 5px 0px 10px;
+        }
+    </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand navbar-logo" href="#">Your Logo</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('home')}}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('projects')}}">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('profile')}}">Profiles</a>
+            </li>
+          </ul>
+      </div>
+  </nav>
+
+  <!-- Cover photo below the navbar -->
+  <div class="cover-photo"></div>
+
+  <!-- CodeCrafters Section -->
+  <section class="intro-section">
+      <div class="container">
+          <div class="row no-padding-row">
+              <div class="col-md-8 offset-md-2">
+                  <div class="intro-title">
+                      ✦ Laboratories ✦
+                  </div>
+                  <div class="intro-description">
+                    Dive into our world of coding craftsmanship as we present a suite of projects that showcase our exploration and mastery of data structures and algorithms.
+                    Each project is a chapter in our coding journey, reflecting our dedication to understanding and applying these fundamental concepts. <br><br>Ready to explore the brilliance of data structures and algorithms with us? Let's embark on this coding adventure together!
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <div class="container">
+    <div class="group-lab">
+        <h3 style="text-align: center">Laboratories</h3>
+        <div class="lab-file">
+            <div class="course-box">
+              <a href="{{ url_for('searchalgo')}}">
+              <img class ="course-image" image src="{{ url_for('static', filename= 'search-cover.png')}}" width="50%">
+              <p class="course-title">SEARCH ALGORITHMS</p>
+              <p class="course-type">OBJECTIVE: To implement and compare the performance of various search algorithms on different data sets.</p>
+              </a>
+            </div>
+            <div class="course-box">
+                <a href="{{ url_for('index')}}">
+                <img class ="course-image" image src="{{ url_for('static', filename= 'stack-cover.png')}}" width="50%">
+                <p class="course-title">STACK</p>
+                <p class="course-type">OBJECTIVE: To implement the Shunting Yard algorithm for Infix to postfix notation using Stack data structure.</p>
+                </a>
+            </div>
+            <div class="course-box">
+                <a href="{{ url_for('dequeue_queue')}}">
+                <img class ="course-image" image src="{{ url_for('static', filename= 'qdq-cover.jpg')}}" width="50%">
+                <p class="course-title">QUEUES AND DEQUEUES</p>
+                <p class="course-type">OBJECTIVE: To implement Queue and De-que data structure using linked list.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+  <!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

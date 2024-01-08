@@ -7,13 +7,25 @@ from jump_search import jump_search
 from interpolation_search import interpolation_search
 from ternary_search import ternary_search
 from data_set import generate_sorted_list
-from infix_to_postfix import infix_to_postfix
+from stack_operations import infixToPostfix
+from queue1 import Queue
 
 app = Flask(__name__)
+my_queue = Queue()
+deque_elements = []
+
 
 @app.route('/')
 def home():
     return render_template("home.html")
+
+@app.route('/projects')
+def projects():
+    return render_template('projects.html')
+
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
     
 @app.route('/angel')
 def angel():
@@ -55,8 +67,57 @@ def contact():
 def searchalgo():
     return render_template("searchalgo.html")
 
+@app.route('/dequeue_queue')
+def dequeue_queue():
+    return render_template("dequeue_queue.html")
+
+@app.route('/queue')
+def queue():
+    return render_template('queue.html')
+
+@app.route("/enqueue/<int:data>")
+def enqueue(data):
+    my_queue.enqueue(data)
+    return jsonify({"elements": my_queue.get_queue_elements()})
+
+@app.route("/dequeue")
+def dequeue():
+    data = my_queue.dequeue()
+    return jsonify({"data": data, "elements": my_queue.get_queue_elements()})
+
+@app.route('/deque')
+def deque():
+    return render_template("deque.html", deque_elements=deque_elements)
+
+@app.route('/enqueue_front/<int:data>')
+def enqueue_front(data):
+    deque_elements.insert(0, data)
+    return jsonify({"elements": deque_elements})
+
+@app.route('/enqueue_rear/<int:data>')
+def enqueue_rear(data):
+    deque_elements.append(data)
+    return jsonify({"elements": deque_elements})
+
+@app.route('/dequeue_front')
+def dequeue_front():
+    if deque_elements:
+        deque_elements.pop(0)
+    return jsonify({"elements": deque_elements})
+
+@app.route('/dequeue_rear')
+def dequeue_rear():
+    if deque_elements:
+        deque_elements.pop()
+    return jsonify({"elements": deque_elements})
+
+
+
+
 @app.route("/small_array", methods=["GET", "POST"])
 def small_array():
+
+
 
     small_data = generate_sorted_list(100)
     medium_data = generate_sorted_list(1000)
@@ -233,8 +294,8 @@ def index():
 @app.route('/convert', methods=['POST'])
 def convert():
     infix_expression = request.form['infix_expression']
-    postfix_expression = stack_operations(infix_expression)
-    return render_template('index.html', infix_expression=infix_expression, postfix_expression=postfix_expression)
+    output = infixToPostfix(infix_expression)
+    return render_template('index.html', output=output)
 
 if __name__ == "__main__":
     app.run(debug=True)
