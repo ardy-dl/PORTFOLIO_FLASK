@@ -13,11 +13,10 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Open Sans', 'Orbitron', Arial, sans-serif;
-            background-color: black;
+            background-color: #eae1da;
         }
-
         .main-content {
-            font-family: 'Orbitron';
+            font-family: 'Libre Baskerville', serif;
             
         }
 
@@ -25,12 +24,12 @@
             text-align: center;
             margin-left: 50px;
             margin-bottom: 20px;
-            color: white;
+            color: black;
             font-size: 50px;
         }
 
         .to{
-            color: red;
+            color: black;
         }
 
         form {
@@ -64,7 +63,7 @@
         .def{
             width: 50%;
             margin: 0 auto;
-            color: white;
+            color: black;
             text-align: center;
             font-size: 15px;
             margin-bottom: 30px;
@@ -77,10 +76,10 @@
         button[type="submit"] {
             display: flex;
             border: none;
-            font-family: 'Orbitron';
+            font-family: 'Libre Baskerville', serif;
             background-color:white; 
             color: black; 
-            padding: 10px 20px; 
+            padding: 10px 20px;
             width:10%;
             cursor: pointer;
             font-size: 16px;
@@ -89,16 +88,17 @@
             margin-left: 580px;
             align-items: center;
             justify-content: center;
+            border: 2px solid #333;
         }
 
         button[type="submit"]:hover {
-            background-color: #ff0000;
+            background-color: #eae1da;
         }
 
         /* FOOTER STARTS HERE */
 
         footer {
-            color: white;
+            color:black;
             padding: 15px;
             position: fixed;
             bottom: 0;
@@ -130,13 +130,13 @@
             <form action="/convert" method="post">
                 <label for="infixInput">Enter infix expression:</label>
                 <input type="text" id="infixInput" name="infix_expression">
-                {% if output %}
+                <!--{% if output %}-->
                 <div class="output-section">
                     <label for="output">Postfix expression is: </label> {{ output }}
                 </div>
-                {% endif %}
+                <!--{% endif %}-->
                 <br>
-                
+            
                 <button type="submit">
                     CONVERT
                     <img class="continue-btn">
