@@ -24,6 +24,54 @@
           height: 250px; 
           object-fit: cover; 
         }
+
+        .beh {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            position: absolute;
+            background-color: #00000063;
+            color:#ffffff;
+        }
+
+        .beh:before {
+            content: "";
+            position: absolute;
+            top: 4px; /* Adjust the inner border position */
+            right: 4px; /* Adjust the inner border position */
+            bottom: 4px; /* Adjust the inner border position */
+            left: 4px; /* Adjust the inner border position */
+            border: 1px solid #ffffff; /* Inner border color */
+        }
+
+        .beh1 {
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            position: absolute;
+            background-color: #000000;
+            color:#ffffff;
+        }
+
+        .beh1:before {
+            content: "";
+            position: absolute;
+            top: 4px; /* Adjust the inner border position */
+            right: 4px; /* Adjust the inner border position */
+            bottom: 4px; /* Adjust the inner border position */
+            left: 4px; /* Adjust the inner border position */
+            border: 1px solid #ffffff; /* Inner border color */
+        }
         
         .container .btn {
           position: absolute;
@@ -35,12 +83,17 @@
           color: black;
           font-size: 16px;
           padding: 16px 30px;
-          border: none;
+          border: 1px solid #EAE1DA;
           cursor: pointer;
           border-radius: 5px;
           text-align: center;
           opacity: 100%;
         }
+
+        .beh:hover, .beh1:hover {
+            opacity: 0.5;
+        }
+        
         
         .container .btn:hover {
           background-color: black;
@@ -63,27 +116,27 @@
     <section class="array">
         <div class="container">
             <a href="{{ url_for('small_array')}}">
-              <img src="{{ url_for('static', filename='small.jpg')}}" alt="Small Array Image">
-              <button class="btn">Small Array</button>
+              <img src="{{ url_for('static', filename='choice-cover.png')}}" alt="Small Array Image">
+              <button class="beh">Small Array</button>
             </a>
         </div>
         <div class="container">
             <a href="{{ url_for('medium_array')}}">
-                <img src="{{ url_for('static', filename='medium.jpg')}}" alt="Medium Array Image">
-                <button class="btn">Medium Array</button>
+                <img src="{{ url_for('static', filename='choice-cover.png')}}" alt="Medium Array Image">
+                <button class="beh">Medium Array</button>
             </a>
         </div>
         <div class="container">
             <a href="{{ url_for('large_array')}}">
-                <img src="{{ url_for('static', filename='large.jpg')}}" alt="Large Array Image">
-                <button class="btn">Large Array</button>
+                <img src="{{ url_for('static', filename='choice-cover.png')}}" alt="Large Array Image">
+                <button class="beh">Large Array</button>
             </a>
         </div>
     </section>
 
     <p style="text-align: center;">
-        <a href="{{ url_for('home') }}">
-          <button class="btn">Go Back</button>
+        <a href="{{ url_for('projects') }}">
+          <button class="beh1">Go Back</button>
         </a>
     </p>
 
