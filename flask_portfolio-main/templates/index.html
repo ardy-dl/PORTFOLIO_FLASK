@@ -8,13 +8,21 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap">
     <title>Infix to Postfix</title>
     <style>
+
+
+        * {
+            font-family: 'Libre Baskerville', serif;
+            box-sizing: border-box;
+        }
         body {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Open Sans', 'Orbitron', Arial, sans-serif;
             background-color: #eae1da;
+            
         }
+
+
         .main-content {
             font-family: 'Libre Baskerville', serif;
             
@@ -74,26 +82,31 @@
         }
         /* Style the submit button */
         button[type="submit"] {
-            display: flex;
-            border: none;
-            font-family: 'Orbitron';
-            background-color:white; 
-            color: black; 
+            display: inline-block;
             padding: 10px 20px;
-            width:10%;
-            cursor: pointer;
+            width: 10%;
             font-size: 16px;
-            text-align: center !important;
-            transition: background-color 0.3s ease; 
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #EAE1DA; /* Outer border color */
+            position: relative;
+            background-color: #000000;
+            color:#EAE1DA;
             margin-left: 580px;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #333;
         }
 
-        button[type="submit"]:hover {
-            background-color: #eae1da;
+        button[type="submit"]:before {
+            content: "";
+            position: absolute;
+            top: 4px; /* Adjust the inner border position */
+            right: 4px; /* Adjust the inner border position */
+            bottom: 4px; /* Adjust the inner border position */
+            left: 4px; /* Adjust the inner border position */
+            border: 1px solid #EAE1DA; /* Inner border color */
         }
+        /* button[type="submit"]:hover {
+            background-color: #eae1da;
+        } */
 
         /* FOOTER STARTS HERE */
         .footer-section {
@@ -104,9 +117,13 @@
             margin: 0;
             font-size: 14px;
         }
+
+       
+  
     </style>
 </head>
 <body>
+
 
     <div class="main-content">
         <h1 class="itp">Infix <span class="to"> to </span> Postfix</h1>
@@ -127,7 +144,8 @@
                 </div>
             
                 <br>
-            
+
+                
                 <button type="submit">
                     CONVERT
                     <img class="continue-btn">
