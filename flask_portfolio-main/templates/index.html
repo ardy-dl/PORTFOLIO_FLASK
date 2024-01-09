@@ -70,13 +70,13 @@
         }
 
         .output-section {
-            color: white;
+            color: black;
         }
         /* Style the submit button */
         button[type="submit"] {
             display: flex;
             border: none;
-            font-family: 'Libre Baskerville', serif;
+            font-family: 'Orbitron';
             background-color:white; 
             color: black; 
             padding: 10px 20px;
@@ -130,11 +130,11 @@
             <form action="/convert" method="post">
                 <label for="infixInput">Enter infix expression:</label>
                 <input type="text" id="infixInput" name="infix_expression">
-                <!--{% if output %}-->
+                
                 <div class="output-section">
                     <label for="output">Postfix expression is: </label> {{ output }}
                 </div>
-                <!--{% endif %}-->
+            
                 <br>
             
                 <button type="submit">
