@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linked List Queue Visualization</title>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <title>Queue Linked List</title>
@@ -22,44 +21,52 @@
             display: flex;
             flex-direction: column;
         }
-  
+
         .navbar-logo {
-            margin-left: 100px; /* Adjust the margin to move the logo to the right */
+            margin-left: 50px;
+            height:50px; 
         }
-  
+
         .navbar-nav {
-            padding-left: 700px; /* Center the navbar */
+            padding-left: 700px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
-  
+
         .navbar-nav .nav-item {
-            text-align: center; /* Center the text within each nav item */
+            text-align: center; 
         }
-  
+
         .navbar-nav .nav-item .nav-link {
-            text-transform: uppercase; /* Make text uppercase */
-            color: #ffffff; /* Set text color to white */
+            text-transform: uppercase;
+            color: #ffffff; 
         }
-  
+
         .navbar {
-            background-color: #000000; /* Set the background color to jet black */ 
+            background-color: #000000; 
+            position:fixed;
+            z-index: 101;
+            padding-right: 400px;
         }
-  
+
         @media (max-width: 767.98px) {
             .navbar-collapse {
-                padding-left: 0 !important; /* Remove left padding when collapsed */
+                padding-left: 0 !important; 
             }
         }
 
         /* Styling for the cover photo */
         .cover-photo {
-            background-image: url('/static/queue.jpg'); /* Replace 'your-cover-photo.jpg' with the actual path to your cover photo */
+            background-image: url('/static/queue.jpg'); 
             background-size: cover;
             background-position: center;
-            height: 200px; /* Adjust the height as needed */
+            height: 200px; 
             position: relative;
+        }
+
+        .cov-phot {
+            padding-top: 66px;
         }
 
         #queue-container {
@@ -72,7 +79,7 @@
             height: 200px;
             position:relative;
             top: -50px;
-            border: 2px solid #000000; /* Black border */
+            border: 2px solid #000000; 
             z-index: 1;
         }
 
@@ -101,7 +108,7 @@
             font-size: 16px;
             text-align: center;
             text-decoration: none;
-            border: 1px solid #EAE1DA; /* Outer border color */
+            border: 1px solid #EAE1DA; 
             position: relative;
             background-color: #000000;
             color:#EAE1DA;
@@ -110,16 +117,15 @@
         button:before {
             content: "";
             position: absolute;
-            top: 4px; /* Adjust the inner border position */
-            right: 4px; /* Adjust the inner border position */
-            bottom: 4px; /* Adjust the inner border position */
-            left: 4px; /* Adjust the inner border position */
-            border: 1px solid #EAE1DA; /* Inner border color */
+            top: 4px; 
+            right: 4px; 
+            bottom: 4px; 
+            left: 4px; 
+            border: 1px solid #EAE1DA; 
         }
 
-        /* Add this CSS to your existing style block */
         .footer-section {
-            background-color: #000000; /* Set the background color to black */
+            background-color: #000000; 
             margin-top: auto;
         }
 
@@ -133,26 +139,27 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand navbar-logo" href="#">Your Logo</a>
+        <a class="navbar-brand navbar-logo" href=""><img src="/static/logo.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="try.html">Home</a>
+                    <a class="nav-link" href="{{ url_for('home')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Projects</a>
+                    <a class="nav-link" href="{{ url_for('projects')}}">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="profile.html">Profiles</a>
+                    <a class="nav-link" href="{{ url_for('profile')}}">Profiles</a>
                 </li>
             </ul>
         </div>
     </nav>
+    
 
-    <div class="cover-photo"></div>
+    <section class="cov-phot"> <div class="cover-photo"></div></section>
 
     <div id="queue-container"></div>
 
@@ -195,7 +202,6 @@
         }
 
 
-        // Delay for visualization purpose (you might want to use promises for better control)
         setTimeout(() => {
             dequeue();
         }, 2000);
@@ -207,7 +213,6 @@
         </a>
     </p>
 
-    <!--Footer-->
     <footer class="footer-section">
         <div class="container text-center text-white py-2">
             &copy; 2023 Group I BSCpE 2-6 | All rights reserved.

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Group I | Home Page</title>
+    <title>Group I | Home</title>
     <style>
         * {
             font-family: 'Libre Baskerville', serif;
@@ -20,27 +20,27 @@
 
         .navbar-logo {
             margin-left: 50px;
-            height:50px; /* Adjust the margin to move the logo to the right */
+            height:50px; 
         }
 
         .navbar-nav {
-            padding-left: 700px; /* Center the navbar */
+            padding-left: 700px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .navbar-nav .nav-item {
-            text-align: center; /* Center the text within each nav item */
+            text-align: center; 
         }
 
         .navbar-nav .nav-item .nav-link {
-            text-transform: uppercase; /* Make text uppercase */
-            color: #ffffff; /* Set text color to white */
+            text-transform: uppercase; 
+            color: #ffffff; 
         }
 
         .navbar {
-            background-color: #000000; /* Set the background color to jet black */ 
+            background-color: #000000; 
             position:fixed;
             z-index: 101;
             padding-right: 400px;
@@ -48,21 +48,22 @@
 
         @media (max-width: 767.98px) {
             .navbar-collapse {
-                padding-left: 0 !important; /* Remove left padding when collapsed */
+                padding-left: 0 !important; 
             }
         }
 
         /* Styling for the cover photo */
         .cover-photo {
-            background-image: url('/static/Portfolio.jpg'); /* Replace 'your-cover-photo.jpg' with the actual path to your cover photo */
+            background-image: url('/static/Portfolio.jpg'); 
             background-size: cover;
             background-position: center;
-            height: 400px; /* Adjust the height as needed */
+            height: 400px; 
         }
 
         .cov-phot {
             padding-top: 66px;
         }
+
         .intro-section {
             font-size: 15px;
             padding: 50px;
@@ -80,11 +81,11 @@
         .sneak-peek-section {
             font-size: 15px;
             height: 58vh;
-            background-color: #EAE1DA; /* Light brown background */
+            background-color: #EAE1DA; 
             padding: 20px;
             margin-top: -20px;
             margin-bottom: 0px;
-            position: relative; /* Add position relative to the container */
+            position: relative; 
         }
 
         .sneak-peek-title {
@@ -92,7 +93,7 @@
             font-weight: bold;
             padding-top: 20px;
             margin-bottom: 20px;
-            text-align: center; /* Center the title */
+            text-align: center; 
         }
 
         .sneak-peek-list {
@@ -111,7 +112,6 @@
             margin-bottom: 10px;
         }
 
-        /* four-column layout for Sneak Peek */
         .sneak-peek-columns {
             column-count: 4;
         }
@@ -123,11 +123,10 @@
             right: -168px;
             bottom: -10px;
             left: -168px;
-            border: 2px solid #000000; /* Black border */
+            border: 2px solid #000000; 
             box-sizing: border-box;
         }
 
-        /* Add this CSS to your existing style block */
         .creators-row {
             display: flex;
             flex-wrap: wrap;
@@ -135,7 +134,7 @@
         }
 
         .creator {
-            flex: 0 0 calc(24% - 40px); /* Adjust the percentage based on your preference */
+            flex: 0 0 calc(24% - 40px); 
             margin-bottom: 40px;
         }
 
@@ -144,9 +143,8 @@
             height: auto;
         }
 
-        /* Add this CSS to your existing style block */
         .footer-section {
-            background-color: #000000; /* Set the background color to black */
+            background-color: #000000; 
         }
 
         .footer-section p {
@@ -179,11 +177,9 @@
     </nav>
     
 
-    <!-- Cover photo below the navbar -->
     <section class="cov-phot"> <div class="cover-photo"></div></section>
    
 
-    <!-- CodeCrafters Section -->
     <section class="intro-section">
         <div class="container">
             <div class="row no-padding-row">
@@ -204,7 +200,7 @@
         <div class="container">
             <div class="row no-padding-row">
                 <div class="col-md-12">
-                    <div class="sneak-peek-border"></div> <!-- Black border inside the brown background -->
+                    <div class="sneak-peek-border"></div> 
                     <div class="sneak-peek-title">
                         Sneak Peek:
                     </div>
@@ -290,7 +286,6 @@
     </footer>
 
 
-    <!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

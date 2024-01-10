@@ -6,20 +6,19 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://icons8.com/">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <title>Infix to Postfix</title>
     <style>
 
-
         * {
             font-family: 'Libre Baskerville', serif;
+            margin: 0px;
+            padding: 0px;
             box-sizing: border-box;
         }
+  
         body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #eae1da;
-            
+            background-color: #ffffff;
         }
 
         .navbar-logo {
@@ -35,16 +34,16 @@
         }
 
         .navbar-nav .nav-item {
-            text-align: center;
+            text-align: center; 
         }
 
         .navbar-nav .nav-item .nav-link {
             text-transform: uppercase;
-             color: #ffffff;
+            color: #ffffff; 
         }
-        
+
         .navbar {
-            background-color: #000000;
+            background-color: #000000; 
             position:fixed;
             z-index: 101;
             padding-right: 400px;
@@ -52,13 +51,44 @@
 
         @media (max-width: 767.98px) {
             .navbar-collapse {
-                padding-left: 0 !important;
+                padding-left: 0 !important; 
             }
         }
+
+        /* Styling for the cover photo */
+        .cover-photo {
+            background-image: url('/static/stack-algo.png'); 
+            background-size: cover;
+            background-position: center;
+            height: 200px; 
+            position: relative;
+        }
+
+        .cov-phot {
+            padding-top: 66px;
+        }
+
         
+        .intro-section {
+            font-size: 15px;
+            padding: 50px;
+            padding-bottom: 0px;
+            text-align: center;
+        }
+
+        .intro-title {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .intro-description {
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+
         .main-content {
-            font-family: 'Libre Baskerville', serif;
-            
+            padding-bottom: 30px;
         }
 
         .itp{
@@ -82,7 +112,7 @@
             font-weight: 500;
             margin-left: 480px;
             margin-bottom: 10px;
-            color:  rgb(180, 100, 100);
+            color:#000000;
         }
 
         input {
@@ -137,25 +167,23 @@
             left: 4px; /* Adjust the inner border position */
             border: 1px solid #EAE1DA; /* Inner border color */
         }
-        /* button[type="submit"]:hover {
-            background-color: #eae1da;
-        } */
+        button[type="submit"]:hover {
+            opacity: 0.5;
+        } 
 
-        .beh1 {
-            top: 115%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
+        .btn2 {
+            top: 100.7%;
+            left: 49%;
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 15px;
             text-align: center;
             text-decoration: none;
             position:absolute;
             background-color: #000000;
-            color:#ffffff;
+            color:#EAE1DA;
         }
 
-        .beh1:before {
+        .btn2:before {
             content: "";
             position:absolute;
             top: 4px; 
@@ -164,8 +192,11 @@
             left: 4px; 
             border: 1px solid #ffffff; 
         }
-        
 
+        .btn2:hover {
+            opacity: 0.5;
+        }
+        
 
         /* FOOTER STARTS HERE */
         .footer-section {
@@ -183,7 +214,7 @@
 </head>
 <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand navbar-logo" href=""><img src="/static/logo.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -202,11 +233,24 @@
             </ul>
         </div>
     </nav>
+    
+
+    <section class="cov-phot"> <div class="cover-photo"></div></section>
+
+        
+    <section class="intro-section">
+        <div class="container1">
+                <div class="col-md-12">
+                    <div class="intro-title">
+                        ✦ What is Infix to Postfix expression ✦
+                    </div>
+                </div>
+        </div>
+    </section>
+
 
 
     <div class="main-content">
-        <h1 class="itp">Infix <span class="to"> to </span> Postfix</h1>
-        <h2 class="title">What is infix and postfix expression?</h2>
         <p class="def">An infix expression is expression which is used by us in day today life An infix expression is a
             single letter, or an operator, proceeded by one infix string and followed by another infix string. e.g.
             A,A + B,(A + B) + (C – D).So,in which we have operators between operands.And postfix expression (also
@@ -233,16 +277,20 @@
     </div>
 
     <p style="text-align: center;">
-        <a href="{{ url_for('home') }}">
-          <button class="btn">Go Back</button>
+        <a href="{{ url_for('projects') }}">
+          <button class="btn2">GO BACK</button>
         </a>
     </p>
     
-<footer class="footer-section">
-    <div class="container text-center text-white py-2">
-        &copy; 2023 Group I BSCpE 2-6 | All rights reserved.
-    </div>
-</footer>
+    <footer class="footer-section">
+        <div class="container text-center text-white py-2">
+            &copy; 2023 Group I BSCpE 2-6 | All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>
