@@ -261,9 +261,11 @@
             <form action="/convert" method="post">
                 <label for="infixInput">Enter infix expression:</label>
                 <input type="text" id="infixInput" name="infix_expression">
+                <!-- {% if output %} -->
                 
                 <div class="output-section">
                     <label for="output">Postfix expression is: </label> {{ output }}
+                <!-- {% endif %} -->
                 </div>
             
                 <br>
