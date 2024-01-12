@@ -54,12 +54,33 @@
 
         /* Styling for the cover photo */
         .cover-photo {
-            background-image: url('/static/qdq-choice.png'); /*change picture for hash table cover photo*/
+            background-image: url('img/cover.avif'); /*change picture for hash table cover photo*/
             background-size: cover;
             background-position: center;
             height: 200px; 
         }
 
+        .text-box {
+            position: absolute;
+            top: 25%;
+            left: 45%;
+            height: 60px;
+            width: 400px;
+            align-items: center;
+            transform: translate(-30%, -30%);
+            background-color: rgba(250, 235, 215, 0.4);
+            padding: 20px;
+            text-align: center;
+            border: 3px solid #000000;
+            box-shadow: 0 0 10px rgba (0, 0, 0, 0.3);
+        }
+
+        .text-box p {
+            font-size: large;
+            font-weight: lighter;
+            margin: 0;
+        }
+        
         .cov-phot {
             padding-top: 66px;
         }
@@ -179,9 +200,16 @@
         </div>
     </nav>
 
-    <section class="cov-phot"><div class="cover-photo"></div></section>
+    <section class="cov-phot">
+        <div class="cover-photo">
+            <div class="text-box">
+                <p>H A S H        T A B L E</p>
+            </div>
+        </div>
+    </section>
+    
 
-    <section class="intro-section">
+    <section class="intro-section" style="background-color: #e1cdc1;">
         <div class="container1">
             <div class="col-md-12">
                 <div class="intro-title">
@@ -195,6 +223,7 @@
             </div>
         </div>
     </section>
+    
 
     <!-- Inside the hash-function section -->
     <section class="hash-function">
@@ -202,16 +231,16 @@
             <div class="ht-choose-function">
                 <form action="{{ url_for('process_commands') }}" method="post">
                     <p>Choose Hash Function:</p>
-                    <select name="hash_function">
+                    <select name="hash_function" style="background-color: #e1cdc1;">
                         <option value="1">Hash Function 1</option>
                         <option value="2">Hash Function 2</option>
                         <option value="3">Hash Function 3</option>
                     </select>
                     <p>Number of Commands</p>
-                    <input type="number" name="num_commands" placeholder="Enter here">
+                    <input type="number" name="num_commands" placeholder="Enter here" style="background-color: #e1cdc1;">
                     {% for i in range(num_commands) %}
                     <p>Command {{ i + 1 }}:</p>
-                    <input type="text" name="command{{ i }}" placeholder="Enter here">
+                    <input type="text" name="command{{ i }}" placeholder="Enter here" style="background-color: #e1cdc1;">
                     {% endfor %}
                     <div class="srg-button">
                         <button class="btn" id="submitBtn" type="submit">Submit</button>
@@ -221,15 +250,16 @@
                         </a>
                     </div>
                 </form>
+                
                 {% if result %}
                 <!-- Display the result table if it exists -->
                 <div id="result-table">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Index</th>
-                                <th>Key</th>
-                                <th>Values</th>
+                                <th style="background-color: #e1cdc1;">Index</th>
+                                <th style="background-color: #e1cdc1;">Key</th>
+                                <th style="background-color: #e1cdc1;">Values</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -245,6 +275,9 @@
                 </div>
                 {% endif %}
             </div>
+        </div>
+    </section>
+    
         </div>
     </section>
 
