@@ -9,6 +9,7 @@ from ternary_search import ternary_search
 from data_set import generate_sorted_list
 from stack_operations import infixToPostfix
 from queue1 import Queue
+from hash_table import HashTable
 
 app = Flask(__name__)
 my_queue = Queue()
@@ -66,6 +67,8 @@ def contact():
 @app.route('/searchalgo')
 def searchalgo():
     return render_template("searchalgo.html")
+
+
 
 @app.route('/dequeue_queue')
 def dequeue_queue():
@@ -297,5 +300,78 @@ def convert():
     output = infixToPostfix(infix_expression)
     return render_template('index.html', output=output)
 
+@app.route('/hash_table')
+def hash_table():
+    return render_template("hash_table.html")
+
+
+
+class HashTable:
+    def __init__(self, size):
+        self.size = size
+        self.table = [None] * size
+
+    def hash_function_1(self, key):
+        return key % self.size
+
+    def hash_function_2(self, key):
+        return ((1731 * key + 520123) % 524287) % self.size
+
+    def hash_function_3(self, key):
+        return hash(key) % self.size
+
+    def insert(self, key, value):
+        index = self.hash_function(key)
+        if self.table[index] is None:
+            self.table[index] = [(key, value)]  # Initialize a stack as a list
+        else:
+            self.table[index].insert(0, (key, value))  # Push at the head of the stack
+
+    def delete(self, key):
+        index = self.hash_function(key)
+        if self.table[index] is not None:
+            for i, (k, _) in enumerate(self.table[index]):
+                if k == key:
+                    del self.table[index][i]
+                    break
+
+    def print_table(self):
+        table_str = ""
+        for i, slot in enumerate(self.table):
+            table_str += f"{i}: {slot}<br>"
+        return table_str
+
+    def set_hash_function(self, choice):
+        if choice == 1:
+            self.hash_function = self.hash_function_1
+        elif choice == 2:
+            self.hash_function = self.hash_function_2
+        elif choice == 3:
+            self.hash_function = self.hash_function_3
+        else:
+            raise ValueError("Invalid choice. Please enter 1, 2, or 3.")
+
+hash_table = HashTable(32)
+
+@app.route('/hash_table', methods=['GET', 'POST'])
+def process_commands():
+    if request.method == 'POST':
+        choice = int(request.form['hash_function'])
+        num_commands = int(request.form['num_commands'])
+        commands = request.form['commands'].split('\n')
+
+        hash_table.set_hash_function(choice)
+
+        for command in commands:
+            if command.startswith("del "):
+                key = sum(map(ord, command[4:]))
+                hash_table.delete(key)
+            else:
+                key = sum(map(ord, command))
+                hash_table.insert(key, command)
+
+        return render_template('hash_table.html', table=hash_table.print_table())
+
+    return render_template('hash_table.html', table="")
 if __name__ == "__main__":
     app.run(debug=True)

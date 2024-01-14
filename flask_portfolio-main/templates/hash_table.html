@@ -1,296 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Lab 4 - Hash Table</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Table</title>
     <style>
-        * {
-            font-family: 'Libre Baskerville', serif;
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-        }
-
         body {
-            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 20px;
         }
 
-        .navbar-logo {
-            margin-left: 50px;
-            height:50px; 
+        form {
+            margin-bottom: 20px;
         }
 
-        .navbar-nav {
-            padding-left: 700px; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        textarea {
+            width: 100%;
+            height: 100px;
         }
 
-        .navbar-nav .nav-item {
-            text-align: center; 
+        table {
+            border-collapse: collapse;
+            width: 100%;
         }
 
-        .navbar-nav .nav-item .nav-link {
-            text-transform: uppercase; 
-            color: #ffffff; 
+        table, th, td {
+            border: 1px solid #ddd;
         }
 
-        .navbar {
-            background-color: #000000; 
-            position:fixed;
-            z-index: 101;
-            padding-right: 400px;
+        th, td {
+            padding: 8px;
+            text-align: left;
         }
-
-        @media (max-width: 767.98px) {
-            .navbar-collapse {
-                padding-left: 0 !important; 
-            }
-        }
-
-        /* Styling for the cover photo */
-        .cover-photo {
-            background-image: url('img src="/static/cover.jfif'); /*change picture for hash table cover photo*/
-            background-size: cover;
-            background-position: center;
-            height: 200px; 
-        }
-
-        .text-box {
-            position: absolute;
-            top: 25%;
-            left: 45%;
-            height: 60px;
-            width: 400px;
-            align-items: center;
-            transform: translate(-30%, -30%);
-            background-color: rgba(250, 235, 215, 0.4);
-            padding: 20px;
-            text-align: center;
-            border: 3px solid #000000;
-            box-shadow: 0 0 10px rgba (0, 0, 0, 0.3);
-        }
-
-        .text-box p {
-            font-size: large;
-            font-weight: lighter;
-            margin: 0;
-        }
-        
-        .cov-phot {
-            padding-top: 66px;
-        }
-
-        .intro-section {
-            font-size: 15px;
-            padding: 50px;
-            text-align: center;
-            margin-bottom: 5px;
-        }
-
-        .intro-title {
-            font-size: 25px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .intro-description {
-            padding-left: 100px;
-            padding-right: 100px;
-        }
-
-        .hash-function {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-        }
-        
-        .container1 {
-            width:100%;
-            text-align: center;
-        }
-
-        .container {
-          position: relative;
-          text-align: center;
-          padding:20px;
-          border: 2px solid #000000;
-        }
-        
-        .container img {
-          width: 60%;
-          height: 250px; 
-          object-fit: cover; 
-        }
-
-        #numberOfCommandsInput {
-            width: 150px;
-            padding: 10px;
-            margin-right: 10px;
-        }
-
-        #hashFunctionSelect {
-            padding: 10px;
-            margin-right: 10px;
-        }
-
-        .srg-button {
-            padding: 10px;
-        }
-
-        .srg-button button,
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            text-align: center;
-            text-decoration: none;
-            border: 1px solid #EAE1DA; 
-            position: relative;
-            background-color: #000000;
-            color: #EAE1DA;
-        }
-
-        .srg-button button:before,
-        .btn:before {
-            content: "";
-            position: absolute;
-            top: 4px; 
-            right: 4px; 
-            bottom: 4px; 
-            left: 4px; 
-            border: 1px solid #EAE1DA; 
-        }
-
-        .footer-section {
-            background-color: #000000; 
-            margin-top: 10%;
-        }
-
-        .footer-section p {
-            margin: 0;
-            font-size: 14px;
-        }
-
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand navbar-logo" href=""><img src="/static/logo.png"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('home')}}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('projects')}}">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('profile')}}">Profiles</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <form method="post">
+        <label for="hash_function">Select Hash Function:</label>
+        <select name="hash_function" id="hash_function">
+            <option value="1">Hash Function 1</option>
+            <option value="2">Hash Function 2</option>
+            <option value="3">Hash Function 3</option>
+        </select>
 
-    <section class="cov-phot">
-        <div class="cover-photo">
-            <div class="text-box">
-                <p>H A S H        T A B L E</p>
-            </div>
-        </div>
-    </section>
-    
+        <br>
 
-    <section class="intro-section" style="background-color: #e1cdc1;">
-        <div class="container1">
-            <div class="col-md-12">
-                <div class="intro-title">
-                    ✦ Hash Functions ✦
-                </div>
-                <div class="intro-description">
-                    <strong>Hash Function 1: </strong> f(k) = k mod m<br>
-                    <strong>Hash Function 2: </strong> f(k) = ((1731 * k + 520123) mod 524287) mod  m<br>
-                    <strong>Hash Function 3: </strong> default hash  method of python
-                </div>
-            </div>
-        </div>
-    </section>
-    
+        <label for="num_commands">Number of Commands:</label>
+        <input type="number" name="num_commands" id="num_commands" required>
 
-    <!-- Inside the hash-function section -->
-    <section class="hash-function">
-        <div class="container">
-            <div class="ht-choose-function">
-                <form action="{{ url_for('process_commands') }}" method="post">
-                    <p>Choose Hash Function:</p>
-                    <select name="hash_function" style="background-color: #e1cdc1;">
-                        <option value="1">Hash Function 1</option>
-                        <option value="2">Hash Function 2</option>
-                        <option value="3">Hash Function 3</option>
-                    </select>
-                    <p>Number of Commands</p>
-                    <input type="number" name="num_commands" placeholder="Enter here" style="background-color: #e1cdc1;">
-                    {% for i in range(num_commands) %}
-                    <p>Command {{ i + 1 }}:</p>
-                    <input type="text" name="command{{ i }}" placeholder="Enter here" style="background-color: #e1cdc1;">
-                    {% endfor %}
-                    <div class="srg-button">
-                        <button class="btn" id="submitBtn" type="submit">Submit</button>
-                        <button class="btn" id="resetBtn">Reset</button>
-                        <a href="{{ url_for('projects') }}">
-                            <button class="btn" id="goBackBtn">Go Back</button>
-                        </a>
-                    </div>
-                </form>
-                
-                {% if result %}
-                <!-- Display the result table if it exists -->
-                <div id="result-table">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th style="background-color: #e1cdc1;">Index</th>
-                                <th style="background-color: #e1cdc1;">Key</th>
-                                <th style="background-color: #e1cdc1;">Values</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for row in result %}
-                            <tr>
-                                <td>{{ row.index }}</td>
-                                <td>{{ row.key }}</td>
-                                <td>{{ row.values }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                {% endif %}
-            </div>
-        </div>
-    </section>
-    
-        </div>
-    </section>
+        <br>
 
+        <label for="commands">Commands (one per line):</label>
+        <textarea name="commands" id="commands" required></textarea>
 
-    <footer class="footer-section">
-        <div class="container text-center text-white py-2">
-            &copy; 2023 Group I BSCpE 2-6 | All rights reserved.
-        </div>
-    </footer>
+        <br>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <input type="submit" value="Submit">
+    </form>
 
+    {% if table %}
+        <h2>Hash Table:</h2>
+        <table>
+            <tr>
+                <th>Index</th>
+                <th>Elements</th>
+            </tr>
+            {{ table | safe }}
+        </table>
+    {% endif %}
 </body>
 </html>
