@@ -155,7 +155,8 @@
             position: relative;
             background-color: #000000;
             color:#EAE1DA;
-            margin-left: 580px;
+            margin-left: 50%; /* Adjust as needed */
+            transform: translateX(-50%);
         }
 
         button[type="submit"]:before {
@@ -172,15 +173,16 @@
         } 
 
         .btn2 {
-            top: 103.7%;
-            left: 49%;
+            display: inline-block;
             padding: 10px 20px;
-            font-size: 15px;
+            margin: 5px;
+            font-size: 16px;
             text-align: center;
             text-decoration: none;
-            position:absolute;
+            border: 1px solid #EAE1DA; 
+            position: relative;
             background-color: #000000;
-            color:#EAE1DA;
+            color: #EAE1DA;
         }
 
         .btn2:before {
@@ -272,7 +274,6 @@
                 
                 <button type="submit">
                     CONVERT
-                    <img class="continue-btn">
                 </button>
             </form>
     </div>
