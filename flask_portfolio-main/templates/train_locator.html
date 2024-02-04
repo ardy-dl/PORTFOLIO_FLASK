@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Lab 5 - TRAIN PATH LOCATOR</title>
+    <style>
+        * {
+            font-family: 'Libre Baskerville', serif;
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        .navbar-logo {
+            margin-left: 50px;
+            height:50px; 
+        }
+
+        .navbar-nav {
+            padding-left: 700px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar-nav .nav-item {
+            text-align: center; 
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            text-transform: uppercase; 
+            color: #ffffff; 
+        }
+
+        .navbar {
+            background-color: #000000; 
+            position:fixed;
+            z-index: 101;
+            padding-right: 400px;
+        }
+
+        @media (max-width: 767.98px) {
+            .navbar-collapse {
+                padding-left: 0 !important; 
+            }
+        }
+
+        /* Styling for the cover photo */
+        .cover-photo {
+            background-image: url();
+            background-size: cover;
+            background-position: center;
+            height: 200px; 
+        }
+
+        .text-box {
+            position: absolute;
+            top: 25%;
+            left: 45%;
+            height: 60px;
+            width: 400px;
+            align-items: center;
+            transform: translate(-30%, -30%);
+            background-color: rgba(250, 235, 215, 0.4);
+            padding: 20px;
+            text-align: center;
+            border: 3px solid #000000;
+            box-shadow: 0 0 10px rgba (0, 0, 0, 0.3);
+        }
+
+        .text-box p {
+            font-size: large;
+            font-weight: lighter;
+            margin: 0;
+        }
+        
+        .cov-phot {
+            padding-top: 66px;
+        }
+
+        .intro-section {
+            font-size: 15px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .intro-title {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .intro-description {
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+
+        .hash-function {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+        
+        .container1 {
+            width:100%;
+            text-align: center;
+        }
+
+        .container {
+          position: relative;
+          text-align: center;
+          padding:20px;
+          border: 2px solid #000000;
+        }
+        
+        .container img {
+          width: 60%;
+          height: 250px; 
+          object-fit: cover; 
+        }
+
+        #numberOfCommandsInput {
+            width: 150px;
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        #hashFunctionSelect {
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        .srg-button {
+            padding: 10px;
+        }
+
+        .srg-button button,
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #EAE1DA; 
+            position: relative;
+            background-color: #000000;
+            color: #EAE1DA;
+        }
+
+        .srg-button button:before,
+        .btn:before {
+            content: "";
+            position: absolute;
+            top: 4px; 
+            right: 4px; 
+            bottom: 4px; 
+            left: 4px; 
+            border: 1px solid #EAE1DA; 
+        }
+
+        .rectangle-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .rounded-rectangle {
+            background-color: #e1cdc1;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            width: 100px; 
+        }
+
+        .total{
+            align-items: left;
+
+        }
+    
+
+        .footer-section {
+            background-color: #000000; 
+            margin-top: 10%;
+        }
+
+        .footer-section p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .rounded-rectangle {
+            background-color: #e1cdc1;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            width: calc(25% - 20px); /* Adjust the width as needed */
+            box-sizing: border-box;
+            display: inline-block;
+        }
+    
+        .rectangle-container {
+            text-align: center;
+        }
+    
+        .total {
+            text-align: left;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #EAE1DA; 
+            background-color: #000000;
+            color: #EAE1DA;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand navbar-logo" href=""><img src="/static/logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('home')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('projects')}}">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('profile')}}">Profiles</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="cov-phot">
+        <div class="cover-photo">
+            <div class="text-box">
+                <p>T   R   A   I   N            P   A   T   H              L   O   C   A   T  O   R</p>
+            </div>
+        </div>
+    </section>
+    
+    
+
+ <!-- Inside the hash-function section -->
+ <section class="hash-function">
+    <div class="container">
+        <div class="ht-choose-function">
+            <div class="bg-img">
+                <img src="/static/route.jpg" alt="Train Path" style="width: 50%; height: 60%;">
+
+                <form method="post">
+                    <label for="hash_function">Train Route:</label>
+                    <select name="hash_function" id="hash_function">
+                        <option value="1">LRT 1</option>
+                        <option value="2">LRT 2</option>
+                        <option value="3">MRT 3</option>
+                    </select>
+
+                    <label for="hash_function">Train Route:</label>
+                    <select name="hash_function" id="hash_function">
+                        <option value="1">LRT 1</option>
+                        <option value="2">LRT 2</option>
+                        <option value="3">MRT 3</option>
+                    </select>
+
+                    <label for="hash_function">Current Station:</label>
+                    <select name="hash_function" id="hash_function">
+                        <option value="L1-1">Roosevelt</option>
+                        <option value="L1-2">Balintawak</option>
+                        <option value="L1-3">Monumento</option>
+                        <option value="L1-4">5th Avenue</option>
+                        <option value="L1-5">R. Papa</option>
+                        <option value="L1-6">Abad Santos</option>
+                        <option value="L1-7">Blumentritt</option>
+                        <option value="L1-8">Tayuman</option>
+                        <option value="L1-9">Bambang</option>
+                        <option value="L1-10">Doroteo Jose (Intersection - Recto)</option>
+                        <option value="L1-11">Carriedo</option>
+                        <option value="L1-12">Central Terminal</option>
+                        <option value="L1-13">United Nations</option>
+                        <option value="L1-14">Pedro Gil</option>
+                        <option value="L1-15">Quirino</option>
+                        <option value="L1-16">Vito Cruz</option>
+                        <option value="L1-17">Gil Puyat</option>
+                        <option value="L1-18">Libertad</option>
+                        <option value="L1-19">EDSA (Intersection - Taft Avenue)</option>
+                        <option value="L1-20">Baclaran</option>
+                        <option value="L2-1">Recto (Intersection - Doroteo Jose)</option>
+                        <option value="L2-2">Legarda</option>
+                        <option value="L2-3">Pureza</option>
+                        <option value="L2-4">V. Mapa</option>
+                        <option value="L2-5">J. Ruiz</option>
+                        <option value="L2-6">Gilmore</option>
+                        <option value="L2-7">Betty-Go Belmonte</option>
+                        <option value="L2-8">Araneta-Cubao</option>
+                        <option value="L2-9">Anonas</option>
+                        <option value="L2-10">Katipunan</option>
+                        <option value="L2-11">Santolan Anapolis</option>
+                        <option value="L2-12">Marikina</option>
+                        <option value="L2-13">Antipolo</option>
+                        <option value="M3-1">North Avenue</option>
+                        <option value="M3-2">Quezoh Avenue</option>
+                        <option value="M3-3">GMA Kamuning</option>
+                        <option value="M3-4">Araneta-Cubao (Intesection)</option>
+                        <option value="M3-5">Santolan Anapolis</option>
+                        <option value="M3-6">Ortigas</option>
+                        <option value="M3-7">Shaw Boulevard</option>
+                        <option value="M3-8">Boni</option>
+                        <option value="M3-9">Guadalupe</option>
+                        <option value="M3-10">Buendia</option>
+                        <option value="M3-11">Ayala</option>
+                        <option value="M3-12">Magallanes</option>
+                        <option value="M3-13">Taft Avenue (Intersection -Recto)</option>
+                    </select>
+
+                    <label for="hash_function">Destination:</label>
+                    <select name="hash_function" id="hash_function">
+                        <option value="L1-1">Roosevelt</option>
+                        <option value="L1-2">Balintawak</option>
+                        <option value="L1-3">Monumento</option>
+                        <option value="L1-4">5th Avenue</option>
+                        <option value="L1-5">R. Papa</option>
+                        <option value="L1-6">Abad Santos</option>
+                        <option value="L1-7">Blumentritt</option>
+                        <option value="L1-8">Tayuman</option>
+                        <option value="L1-9">Bambang</option>
+                        <option value="L1-10">Doroteo Jose (Intersection - Recto)</option>
+                        <option value="L1-11">Carriedo</option>
+                        <option value="L1-12">Central Terminal</option>
+                        <option value="L1-13">United Nations</option>
+                        <option value="L1-14">Pedro Gil</option>
+                        <option value="L1-15">Quirino</option>
+                        <option value="L1-16">Vito Cruz</option>
+                        <option value="L1-17">Gil Puyat</option>
+                        <option value="L1-18">Libertad</option>
+                        <option value="L1-19">EDSA (Intersection - Taft Avenue)</option>
+                        <option value="L1-20">Baclaran</option>
+                        <option value="L2-1">Recto (Intersection - Doroteo Jose)</option>
+                        <option value="L2-2">Legarda</option>
+                        <option value="L2-3">Pureza</option>
+                        <option value="L2-4">V. Mapa</option>
+                        <option value="L2-5">J. Ruiz</option>
+                        <option value="L2-6">Gilmore</option>
+                        <option value="L2-7">Betty-Go Belmonte</option>
+                        <option value="L2-8">Araneta-Cubao</option>
+                        <option value="L2-9">Anonas</option>
+                        <option value="L2-10">Katipunan</option>
+                        <option value="L2-11">Santolan Anapolis</option>
+                        <option value="L2-12">Marikina</option>
+                        <option value="L2-13">Antipolo</option>
+                        <option value="M3-1">North Avenue</option>
+                        <option value="M3-2">Quezoh Avenue</option>
+                        <option value="M3-3">GMA Kamuning</option>
+                        <option value="M3-4">Araneta-Cubao (Intesection)</option>
+                        <option value="M3-5">Santolan Anapolis</option>
+                        <option value="M3-6">Ortigas</option>
+                        <option value="M3-7">Shaw Boulevard</option>
+                        <option value="M3-8">Boni</option>
+                        <option value="M3-9">Guadalupe</option>
+                        <option value="M3-10">Buendia</option>
+                        <option value="M3-11">Ayala</option>
+                        <option value="M3-12">Magallanes</option>
+                        <option value="M3-13">Taft Avenue (Intersection -Recto)</option>
+                    </select>
+            
+                    <br>
+            
+                    <input class="btn" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Additional box section -->
+<section class="additional-box" style="margin-top: 50px;">
+    <div class="container">
+        <div class="rectangle-container">
+            <!-- Four rectangles -->
+            <div class="rounded-rectangle">Monumento</div>
+            <div class="rounded-rectangle">5th Avenue</div>
+            <div class="rounded-rectangle">R. Papa</div>
+            <div class="rounded-rectangle">Abad Santos</div>
+        
+            <!-- Four rectangles below -->
+            <div class="rounded-rectangle">Blumentritt</div>
+            <div class="rounded-rectangle">Tayuman</div>
+            <div class="rounded-rectangle">Bambang</div>
+            <div class="rounded-rectangle">Doroteo Jose</div>
+        
+            <!-- Three rectangles below -->
+            <div class="rounded-rectangle">Recto</div>
+            <div class="rounded-rectangle">Legarda</div>
+            <div class="rounded-rectangle">Pureza</div>
+        </div>
+        <a class="total">Total Station Traveled: </a>
+            </div>
+        <a href="{{ url_for('projects') }}">
+            <button class="btn" id="goBackBtn">Go Back</button>
+        </a>
+    </div>
+</section>
+
+
+    <footer class="footer-section">
+        <div class="container text-center text-white py-2">
+            &copy; 2023 Group I BSCpE 2-6 | All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

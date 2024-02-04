@@ -78,6 +78,10 @@ def dequeue_queue():
 def queue():
     return render_template('queue.html')
 
+@app.route('/train_locator')
+def train_locator():
+    return render_template('train_locator.html')
+
 @app.route("/enqueue/<int:data>")
 def enqueue(data):
     my_queue.enqueue(data)
@@ -373,5 +377,7 @@ def process_commands():
         return render_template('hash_table.html', table=hash_table.print_table())
 
     return render_template('hash_table.html', table="")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
