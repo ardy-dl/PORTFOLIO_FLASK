@@ -10,6 +10,10 @@ from data_set import generate_sorted_list
 from stack_operations import infixToPostfix
 from queue1 import Queue
 from hash_table import HashTable
+from trainstation import Graph, shortest_path
+
+
+
 
 app = Flask(__name__)
 my_queue = Queue()
@@ -78,9 +82,7 @@ def dequeue_queue():
 def queue():
     return render_template('queue.html')
 
-@app.route('/train_locator')
-def train_locator():
-    return render_template('train_locator.html')
+
 
 @app.route("/enqueue/<int:data>")
 def enqueue(data):
@@ -377,6 +379,91 @@ def process_commands():
         return render_template('hash_table.html', table=hash_table.print_table())
 
     return render_template('hash_table.html', table="")
+
+@app.route('/train_locator', methods=['GET', 'POST'])
+def train_locator():
+    global train_network
+
+    if request.method == 'POST':
+        start_station = request.form['start_station']
+        end_station = request.form['end_station']
+        shortest_path_taken, num_stations_traveled = shortest_path(train_network.graph, start_station, end_station)
+
+        return render_template('train_locator.html',
+                               start_station=start_station,
+                               end_station=end_station,
+                               shortest_path_taken=shortest_path_taken,
+                               num_stations_traveled=num_stations_traveled,
+                               stations=sorted(train_network.graph.keys()),
+                               train_network=train_network)
+
+    stations = sorted(train_network.graph.keys())
+    return render_template('train_locator.html', stations=stations, train_network=train_network)
+
+train_network = Graph()
+
+# LRT Line 1 connections
+train_network.add_edge("Roosevelt", "Balintawak", 1)
+train_network.add_edge("Balintawak", "Monumento", 1)
+train_network.add_edge("Monumento", "5th Avenue", 1)
+train_network.add_edge("5th Avenue", "R.Papa", 1)
+train_network.add_edge("R.Papa", "Abad Santos", 1)
+train_network.add_edge("Abad Santos", "Blumentritt", 1)
+train_network.add_edge("Blumentritt", "Tayuman", 1)
+train_network.add_edge("Tayuman", "Bambang", 1)
+train_network.add_edge("Bambang", "Doroteo Jose", 1)
+train_network.add_edge("Doroteo Jose", "Carriedo", 1)
+train_network.add_edge("Carriedo", "Central Terminal", 1)
+train_network.add_edge("Central Terminal", "United Nations", 1)
+train_network.add_edge("United Nations", "Pedro Gil", 1)
+train_network.add_edge("Pedro Gil", "Quirino", 1)
+train_network.add_edge("Quirino", "Vito Cruz", 1)
+train_network.add_edge("Vito Cruz", "Gil Puyat", 1)
+train_network.add_edge("Gil Puyat", "Libertad", 1)
+train_network.add_edge("Libertad", "EDSA", 1)
+train_network.add_edge("EDSA", "Baclaran", 1)
+
+# LRT Line 2 connections
+train_network.add_edge("Recto", "Legarda", 1)
+train_network.add_edge("Legarda", "Pureza", 1)
+train_network.add_edge("Pureza", "V.Mapa", 1)
+train_network.add_edge("V.Mapa", "J.Ruiz", 1)
+train_network.add_edge("J.Ruiz", "Gilmore", 1)
+train_network.add_edge("Gilmore", "Betty Go-Belmonte", 1)
+train_network.add_edge("Betty Go-Belmonte", "Araneta-Cubao", 1)
+train_network.add_edge("Araneta-Cubao", "Anonas", 1)
+train_network.add_edge("Anonas", "Katipunan", 1)
+train_network.add_edge("Katipunan", "Santolan", 1)
+train_network.add_edge("Santolan", "Marikina", 1)
+train_network.add_edge("Marikina", "Antipolo", 1)
+
+# MRT Line 3 connections
+train_network.add_edge("North Avenue", "Quezon Avenue", 1)
+train_network.add_edge("Quezon Avenue", "GMA Kamuning", 1)
+train_network.add_edge("GMA Kamuning", "Araneta-Cubao", 1)
+train_network.add_edge("Araneta-Cubao", "Santolan-Anapolis", 1)
+train_network.add_edge("Santolan-Anapolis", "Ortigas Avenue", 1)
+train_network.add_edge("Ortigas Avenue", "Shaw Boulevard", 1)
+train_network.add_edge("Shaw Boulevard", "Boni", 1)
+train_network.add_edge("Boni", "Guadalupe", 1)
+train_network.add_edge("Guadalupe", "Beundia", 1)
+train_network.add_edge("Beundia", "Ayala", 1)
+train_network.add_edge("Ayala", "Magallanes", 1)
+train_network.add_edge("Magallanes", "Taft Avenue", 1)
+
+# Additional connections
+train_network.add_edge("Doroteo Jose", "Recto", 1)
+train_network.add_edge("EDSA", "Taft Avenue", 1)
+train_network.add_edge("Araneta-Cubao", "Araneta-Cubao", 1)
+
+# Example usage
+start_station = "5th Avenue"
+end_station = "Araneta-Cubao"
+shortest_path_taken, num_stations_traveled = shortest_path(train_network.graph, start_station, end_station)
+
+
+print(f"Shortest distance from {start_station} on to {end_station} on : {shortest_path_taken}")
+print(f"Total number of stations traveled: {num_stations_traveled}")
 
 
 if __name__ == "__main__":

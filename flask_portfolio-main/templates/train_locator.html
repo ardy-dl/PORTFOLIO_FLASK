@@ -182,11 +182,6 @@
             text-align: center;
             width: 100px; 
         }
-
-        .total{
-            align-items: left;
-
-        }
     
 
         .footer-section {
@@ -215,10 +210,14 @@
         }
     
         .total {
-            text-align: left;
+            text-align: center;
             margin-top: 10px;
             font-size: 16px;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
     
         .btn {
@@ -271,133 +270,29 @@
         <div class="ht-choose-function">
             <div class="bg-img">
                 <img src="/static/route.jpg" alt="Train Path" style="width: 50%; height: 60%;">
-
-                <form method="post">
-                    <label for="hash_function">Train Route:</label>
-                    <select name="hash_function" id="hash_function">
-                        <option value="1">LRT 1</option>
-                        <option value="2">LRT 2</option>
-                        <option value="3">MRT 3</option>
-                    </select>
-
-                    <label for="hash_function">Train Route:</label>
-                    <select name="hash_function" id="hash_function">
-                        <option value="1">LRT 1</option>
-                        <option value="2">LRT 2</option>
-                        <option value="3">MRT 3</option>
-                    </select>
-
+    
+                <form method="POST" id="pathForm">
                     <label for="hash_function">Current Station:</label>
-                    <select name="hash_function" id="hash_function">
-                        <option value="L1-1">Roosevelt</option>
-                        <option value="L1-2">Balintawak</option>
-                        <option value="L1-3">Monumento</option>
-                        <option value="L1-4">5th Avenue</option>
-                        <option value="L1-5">R. Papa</option>
-                        <option value="L1-6">Abad Santos</option>
-                        <option value="L1-7">Blumentritt</option>
-                        <option value="L1-8">Tayuman</option>
-                        <option value="L1-9">Bambang</option>
-                        <option value="L1-10">Doroteo Jose (Intersection - Recto)</option>
-                        <option value="L1-11">Carriedo</option>
-                        <option value="L1-12">Central Terminal</option>
-                        <option value="L1-13">United Nations</option>
-                        <option value="L1-14">Pedro Gil</option>
-                        <option value="L1-15">Quirino</option>
-                        <option value="L1-16">Vito Cruz</option>
-                        <option value="L1-17">Gil Puyat</option>
-                        <option value="L1-18">Libertad</option>
-                        <option value="L1-19">EDSA (Intersection - Taft Avenue)</option>
-                        <option value="L1-20">Baclaran</option>
-                        <option value="L2-1">Recto (Intersection - Doroteo Jose)</option>
-                        <option value="L2-2">Legarda</option>
-                        <option value="L2-3">Pureza</option>
-                        <option value="L2-4">V. Mapa</option>
-                        <option value="L2-5">J. Ruiz</option>
-                        <option value="L2-6">Gilmore</option>
-                        <option value="L2-7">Betty-Go Belmonte</option>
-                        <option value="L2-8">Araneta-Cubao</option>
-                        <option value="L2-9">Anonas</option>
-                        <option value="L2-10">Katipunan</option>
-                        <option value="L2-11">Santolan Anapolis</option>
-                        <option value="L2-12">Marikina</option>
-                        <option value="L2-13">Antipolo</option>
-                        <option value="M3-1">North Avenue</option>
-                        <option value="M3-2">Quezoh Avenue</option>
-                        <option value="M3-3">GMA Kamuning</option>
-                        <option value="M3-4">Araneta-Cubao (Intesection)</option>
-                        <option value="M3-5">Santolan Anapolis</option>
-                        <option value="M3-6">Ortigas</option>
-                        <option value="M3-7">Shaw Boulevard</option>
-                        <option value="M3-8">Boni</option>
-                        <option value="M3-9">Guadalupe</option>
-                        <option value="M3-10">Buendia</option>
-                        <option value="M3-11">Ayala</option>
-                        <option value="M3-12">Magallanes</option>
-                        <option value="M3-13">Taft Avenue (Intersection -Recto)</option>
+                    <select name="start_station" id="start_station" required>
+                        {% for station in stations %}
+                            <option value="{{ station }}" {% if start_station == station %}selected{% endif %}>{{ station }}</option>
+                        {% endfor %}
                     </select>
 
                     <label for="hash_function">Destination:</label>
-                    <select name="hash_function" id="hash_function">
-                        <option value="L1-1">Roosevelt</option>
-                        <option value="L1-2">Balintawak</option>
-                        <option value="L1-3">Monumento</option>
-                        <option value="L1-4">5th Avenue</option>
-                        <option value="L1-5">R. Papa</option>
-                        <option value="L1-6">Abad Santos</option>
-                        <option value="L1-7">Blumentritt</option>
-                        <option value="L1-8">Tayuman</option>
-                        <option value="L1-9">Bambang</option>
-                        <option value="L1-10">Doroteo Jose (Intersection - Recto)</option>
-                        <option value="L1-11">Carriedo</option>
-                        <option value="L1-12">Central Terminal</option>
-                        <option value="L1-13">United Nations</option>
-                        <option value="L1-14">Pedro Gil</option>
-                        <option value="L1-15">Quirino</option>
-                        <option value="L1-16">Vito Cruz</option>
-                        <option value="L1-17">Gil Puyat</option>
-                        <option value="L1-18">Libertad</option>
-                        <option value="L1-19">EDSA (Intersection - Taft Avenue)</option>
-                        <option value="L1-20">Baclaran</option>
-                        <option value="L2-1">Recto (Intersection - Doroteo Jose)</option>
-                        <option value="L2-2">Legarda</option>
-                        <option value="L2-3">Pureza</option>
-                        <option value="L2-4">V. Mapa</option>
-                        <option value="L2-5">J. Ruiz</option>
-                        <option value="L2-6">Gilmore</option>
-                        <option value="L2-7">Betty-Go Belmonte</option>
-                        <option value="L2-8">Araneta-Cubao</option>
-                        <option value="L2-9">Anonas</option>
-                        <option value="L2-10">Katipunan</option>
-                        <option value="L2-11">Santolan Anapolis</option>
-                        <option value="L2-12">Marikina</option>
-                        <option value="L2-13">Antipolo</option>
-                        <option value="M3-1">North Avenue</option>
-                        <option value="M3-2">Quezoh Avenue</option>
-                        <option value="M3-3">GMA Kamuning</option>
-                        <option value="M3-4">Araneta-Cubao (Intesection)</option>
-                        <option value="M3-5">Santolan Anapolis</option>
-                        <option value="M3-6">Ortigas</option>
-                        <option value="M3-7">Shaw Boulevard</option>
-                        <option value="M3-8">Boni</option>
-                        <option value="M3-9">Guadalupe</option>
-                        <option value="M3-10">Buendia</option>
-                        <option value="M3-11">Ayala</option>
-                        <option value="M3-12">Magallanes</option>
-                        <option value="M3-13">Taft Avenue (Intersection -Recto)</option>
+                    <select name="end_station" id="end_station" required>
+                        {% for station in stations %}
+                            <option value="{{ station }}" {% if end_station == station %}selected{% endif %}>{{ station }}</option>
+                        {% endfor %}
                     </select>
-            
-                    <br>
-            
-                    <input class="btn" type="submit" value="Submit">
+
+                    <input class="btn" type="submit" value="Find Shortest Path">
                 </form>
             </div>
         </div>
     </div>
 </section>
 
-
-<!-- Additional box section -->
 <section class="additional-box" style="margin-top: 50px;">
     <div class="container">
         <div class="rectangle-container">
@@ -417,25 +312,42 @@
             <div class="rounded-rectangle">Recto</div>
             <div class="rounded-rectangle">Legarda</div>
             <div class="rounded-rectangle">Pureza</div>
+
+
+
+
+            {% if shortest_path_taken %}
+                <div>
+                    <h2>Shortest distance from {{ start_station }} to {{ end_station }}:</h2>
+                    <p>{{ shortest_path_taken }}</p>
+                    <p class="total">Total number of stations traveled: {{ num_stations_traveled }}</p>
+
+                    <a href="{{ url_for('projects') }}"> 
+                        <button class="btn" id="goBackBtn">Go Back</button>
+                    </a>
+                </div>
+                {% endif %}
+
         </div>
-        <a class="total">Total Station Traveled: </a>
-            </div>
-        <a href="{{ url_for('projects') }}">
-            <button class="btn" id="goBackBtn">Go Back</button>
-        </a>
+    </div>     
+</section>      
+
+<ul>
+    {% for edge in train_network.edges %}
+        <li>{{ edge[0] }} to {{ edge[1] }}</li>
+    {% endfor %}
+</ul>
+
+<footer class="footer-section">
+    <div class="container text-center text-white py-2">
+        &copy; 2023 Group I BSCpE 2-6 | All rights reserved.
     </div>
-</section>
-
-
-    <footer class="footer-section">
-        <div class="container text-center text-white py-2">
-            &copy; 2023 Group I BSCpE 2-6 | All rights reserved.
-        </div>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+</footer>
+<script>
+    function resetForm() {
+        const form = document.getElementById("pathForm");
+        form.reset();
+    }
+</script>
 </body>
 </html>
