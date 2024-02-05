@@ -54,11 +54,12 @@
 
         /* Styling for the cover photo */
         .cover-photo {
-            background-image: url('img src="/static/cover.jfif'); /*change picture for hash table cover photo*/
+            background-image: url('/static/hash-header.png'); 
             background-size: cover;
             background-position: center;
             height: 200px; 
         }
+
 
         .text-box {
             position: absolute;
@@ -200,14 +201,8 @@
         </div>
     </nav>
 
-    <section class="cov-phot">
-        <div class="cover-photo">
-            <div class="text-box">
-                <p>H A S H        T A B L E</p>
-            </div>
-        </div>
-    </section>
-    
+    <section class="cov-phot"> <div class="cover-photo"></div></section>
+
 
     <section class="intro-section" style="background-color: #e1cdc1;">
         <div class="container1">
@@ -256,14 +251,7 @@
             {% if table %}
                 <!-- Display the result table if it exists -->
                 <div id="result-table">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th style="background-color: #e1cdc1;">Index</th>
-                                <th style="background-color: #e1cdc1;">Key</th>
-                                <th style="background-color: #e1cdc1;">Values</th>
-                            </tr>
-                        </thead>
+              
                         
                             <tr>
                                 <tr>

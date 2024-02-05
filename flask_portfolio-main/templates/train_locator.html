@@ -54,7 +54,7 @@
 
         /* Styling for the cover photo */
         .cover-photo {
-            background-image: url();
+            background-image: url('/static/train-header.png'); 
             background-size: cover;
             background-position: center;
             height: 200px; 
@@ -119,6 +119,8 @@
           text-align: center;
           padding:20px;
           border: 2px solid #000000;
+          margin-top: 50px;
+s
         }
         
         .container img {
@@ -182,6 +184,11 @@
             text-align: center;
             width: 100px; 
         }
+
+        .total{
+            align-items: left;
+
+        }
     
 
         .footer-section {
@@ -200,7 +207,7 @@
             padding: 20px;
             margin: 10px;
             text-align: center;
-            width: calc(25% - 20px); /* Adjust the width as needed */
+            width: calc(25% - 20px); 
             box-sizing: border-box;
             display: inline-block;
         }
@@ -210,14 +217,10 @@
         }
     
         .total {
-            text-align: center;
+            text-align: left;
             margin-top: 10px;
             font-size: 16px;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
         }
     
         .btn {
@@ -254,15 +257,7 @@
         </div>
     </nav>
 
-    <section class="cov-phot">
-        <div class="cover-photo">
-            <div class="text-box">
-                <p>T   R   A   I   N            P   A   T   H              L   O   C   A   T  O   R</p>
-            </div>
-        </div>
-    </section>
-    
-    
+    <section class="cov-phot"> <div class="cover-photo"></div></section>
 
  <!-- Inside the hash-function section -->
  <section class="hash-function">
@@ -270,84 +265,152 @@
         <div class="ht-choose-function">
             <div class="bg-img">
                 <img src="/static/route.jpg" alt="Train Path" style="width: 50%; height: 60%;">
-    
-                <form method="POST" id="pathForm">
-                    <label for="hash_function">Current Station:</label>
-                    <select name="start_station" id="start_station" required>
-                        {% for station in stations %}
-                            <option value="{{ station }}" {% if start_station == station %}selected{% endif %}>{{ station }}</option>
-                        {% endfor %}
-                    </select>
 
-                    <label for="hash_function">Destination:</label>
-                    <select name="end_station" id="end_station" required>
-                        {% for station in stations %}
-                            <option value="{{ station }}" {% if end_station == station %}selected{% endif %}>{{ station }}</option>
-                        {% endfor %}
-                    </select>
+                <form method="post" action="{{ url_for('calculate_path') }}">
+                    <label for="start_station">Current Station:</label>
+                    <select id="start_station" name="start_station">
+                        <option value="Roosevelt">LRT 1 - Roosevelt</option>
+                        <option value="Balintawak">LRT 1 - Balintawak</option>
+                        <option value="Monumento">LRT 1 - Monumento</option>
+                        <option value="5th Avenue">LRT 1 - 5th Avenue</option>
+                        <option value="R. Papa">LRT 1 - R. Papa</option>
+                        <option value="Abad Santos">LRT 1 - Abad Santos</option>
+                        <option value="Blumentritt">LRT 1 - Blumentritt</option>
+                        <option value="Tayuman">LRT 1 - Tayuman</option>
+                        <option value="Bambang">LRT 1 - Bambang</option>
+                        <option value="Doroteo Jose">LRT 1 - Doroteo Jose Connecting LRT 2 - Recto</option>
+                        <option value="Carriedo">LRT 1 - Carriedo</option>
+                        <option value="Central Terminal">LRT 1 - Central Terminal</option>
+                        <option value="United Nations">LRT 1 - United Nations</option>
+                        <option value="Pedro Gil">LRT 1 - Pedro Gil</option>
+                        <option value="Quirino">LRT 1 - Quirino</option>
+                        <option value="Vito Cruz">LRT 1 - Vito Cruz</option>
+                        <option value="Gil Puyat">LRT 1 - Gil Puyat</option>
+                        <option value="Libertad">LRT 1 - Libertad</option>
+                        <option value="EDSA">LRT 1 - EDSA Connecting MRT 3 - Taft Avenue</option>
+                        <option value="Baclaran">LRT 1 - Baclaran</option>
+                        <option value="Recto">LRT 2 - Recto Connecting LRT 1 - Doroteo Jose</option>
+                        <option value="Legarda">LRT 2 - Legarda</option>
+                        <option value="Pureza">LRT 2 - Pureza</option>
+                        <option value="V. Mapa">LRT 2 - V. Mapa</option>
+                        <option value="J. Ruiz">LRT 2 - J. Ruiz</option>
+                        <option value="Gilmore">LRT 2 - Gilmore</option>
+                        <option value="Betty-Go Belmonte">LRT 2 - Betty-Go Belmonte</option>
+                        <option value="Araneta-Cubao">LRT 2 - Araneta-Cubao Connecting MRT 3 - Araneta-Cubao</option>
+                        <option value="Anonas">LRT 2 - Anonas</option>
+                        <option value="Katipunan">LRT 2 - Katipunan</option>
+                        <option value="Santolan Anapolis">LRT 2 - Santolan Anapolis</option>
+                        <option value="Marikina">LRT 2 - Marikina</option>
+                        <option value="Antipolo">LRT 2 - Antipolo</option>
+                        <option value="North Avenue">MRT 3 - North Avenue</option>
+                        <option value="Quezon Avenue">MRT 3 - Quezon Avenue</option>
+                        <option value="GMA Kamuning">MRT 3 - GMA Kamuning</option>
+                        <option value="Araneta-Cubao Intersection">MRT 3 - Araneta-Cubao Connecting MRT 3 - Araneta-Cubao</option>
+                        <option value="Santolan Anapolis">MRT 3 - Santolan Anapolis</option>
+                        <option value="Ortigas">MRT 3 - Ortigas</option>
+                        <option value="Shaw Boulevard">MRT 3 - Shaw Boulevard</option>
+                        <option value="Boni">MRT 3 - Boni</option>
+                        <option value="Guadalupe">MRT 3 - Guadalupe</option>
+                        <option value="Buendia">MRT 3 - Buendia</option>
+                        <option value="Ayala">MRT 3 - Ayala</option>
+                        <option value="Magallanes">MRT 3 - Magallanes</option>
+                        <option value="Taft Avenue">MRT 3 - Taft Avenue Connecting LRT 2 - Recto</option>
+                    </select><br>
 
-                    <input class="btn" type="submit" value="Find Shortest Path">
+                    <label for="end_station">Destination Station:</label>
+                    <select id="end_station" name="end_station">
+                        <option value="Roosevelt">LRT 1 - Roosevelt</option>
+                        <option value="Balintawak">LRT 1 - Balintawak</option>
+                        <option value="Monumento">LRT 1 - Monumento</option>
+                        <option value="5th Avenue">LRT 1 - 5th Avenue</option>
+                        <option value="R. Papa">LRT 1 - R. Papa</option>
+                        <option value="Abad Santos">LRT 1 - Abad Santos</option>
+                        <option value="Blumentritt">LRT 1 - Blumentritt</option>
+                        <option value="Tayuman">LRT 1 - Tayuman</option>
+                        <option value="Bambang">LRT 1 - Bambang</option>
+                        <option value="Doroteo Jose">LRT 1 - Doroteo Jose Connecting LRT 2 - Recto</option>
+                        <option value="Carriedo">LRT 1 - Carriedo</option>
+                        <option value="Central Terminal">LRT 1 - Central Terminal</option>
+                        <option value="United Nations">LRT 1 - United Nations</option>
+                        <option value="Pedro Gil">LRT 1 - Pedro Gil</option>
+                        <option value="Quirino">LRT 1 - Quirino</option>
+                        <option value="Vito Cruz">LRT 1 - Vito Cruz</option>
+                        <option value="Gil Puyat">LRT 1 - Gil Puyat</option>
+                        <option value="Libertad">LRT 1 - Libertad</option>
+                        <option value="EDSA">LRT 1 - EDSA Connecting MRT 3 - Taft Avenue</option>
+                        <option value="Baclaran">LRT 1 - Baclaran</option>
+                        <option value="Recto">LRT 2 - Recto Connecting LRT 1 - Doroteo Jose</option>
+                        <option value="Legarda">LRT 2 - Legarda</option>
+                        <option value="Pureza">LRT 2 - Pureza</option>
+                        <option value="V. Mapa">LRT 2 - V. Mapa</option>
+                        <option value="J. Ruiz">LRT 2 - J. Ruiz</option>
+                        <option value="Gilmore">LRT 2 - Gilmore</option>
+                        <option value="Betty-Go Belmonte">LRT 2 - Betty-Go Belmonte</option>
+                        <option value="Araneta-Cubao">LRT 2 - Araneta-Cubao Connecting MRT 3 - Araneta-Cubao</option>
+                        <option value="Anonas">LRT 2 - Anonas</option>
+                        <option value="Katipunan">LRT 2 - Katipunan</option>
+                        <option value="Santolan Anapolis">LRT 2 - Santolan Anapolis</option>
+                        <option value="Marikina">LRT 2 - Marikina</option>
+                        <option value="Antipolo">LRT 2 - Antipolo</option>
+                        <option value="North Avenue">MRT 3 - North Avenue</option>
+                        <option value="Quezon Avenue">MRT 3 - Quezon Avenue</option>
+                        <option value="GMA Kamuning">MRT 3 - GMA Kamuning</option>
+                        <option value="Araneta-Cubao Intersection">MRT 3 - Araneta-Cubao Connecting MRT 3 - Araneta-Cubao</option>
+                        <option value="Santolan Anapolis">MRT 3 - Santolan Anapolis</option>
+                        <option value="Ortigas">MRT 3 - Ortigas</option>
+                        <option value="Shaw Boulevard">MRT 3 - Shaw Boulevard</option>
+                        <option value="Boni">MRT 3 - Boni</option>
+                        <option value="Guadalupe">MRT 3 - Guadalupe</option>
+                        <option value="Buendia">MRT 3 - Buendia</option>
+                        <option value="Ayala">MRT 3 - Ayala</option>
+                        <option value="Magallanes">MRT 3 - Magallanes</option>
+                        <option value="Taft Avenue">MRT 3 - Taft Avenue Connecting LRT 2 - Recto</option>
+                    </select>
+                            <br>
+                    <input class="btn" type="submit" value="Submit">
                 </form>
             </div>
         </div>
     </div>
 </section>
 
+
+<!-- result section -->
 <section class="additional-box" style="margin-top: 50px;">
     <div class="container">
-        <div class="rectangle-container">
-            <!-- Four rectangles -->
-            <div class="rounded-rectangle">Monumento</div>
-            <div class="rounded-rectangle">5th Avenue</div>
-            <div class="rounded-rectangle">R. Papa</div>
-            <div class="rounded-rectangle">Abad Santos</div>
-        
-            <!-- Four rectangles below -->
-            <div class="rounded-rectangle">Blumentritt</div>
-            <div class="rounded-rectangle">Tayuman</div>
-            <div class="rounded-rectangle">Bambang</div>
-            <div class="rounded-rectangle">Doroteo Jose</div>
-        
-            <!-- Three rectangles below -->
-            <div class="rounded-rectangle">Recto</div>
-            <div class="rounded-rectangle">Legarda</div>
-            <div class="rounded-rectangle">Pureza</div>
-
-
-
-
-            {% if shortest_path_taken %}
-                <div>
-                    <h2>Shortest distance from {{ start_station }} to {{ end_station }}:</h2>
-                    <p>{{ shortest_path_taken }}</p>
-                    <p class="total">Total number of stations traveled: {{ num_stations_traveled }}</p>
-
-                    <a href="{{ url_for('projects') }}"> 
-                        <button class="btn" id="goBackBtn">Go Back</button>
-                    </a>
-                </div>
-                {% endif %}
-
+        <!-- Display the calculated values here -->
+        <div class="result-container">
+ 
+            <h2>Number of Stations Traveled:</h2>
+            <p>{{ num_stations_traveled }}</p>
         </div>
-    </div>     
-</section>      
 
-<ul>
-    {% for edge in train_network.edges %}
-        <li>{{ edge[0] }} to {{ edge[1] }}</li>
-    {% endfor %}
-</ul>
-
-<footer class="footer-section">
-    <div class="container text-center text-white py-2">
-        &copy; 2023 Group I BSCpE 2-6 | All rights reserved.
+        <!-- Display the result in rectangles -->
+        <div class="rectangle-container">
+            {% for station in shortest_path_taken %}
+                <div class="rounded-rectangle">{{ station }}</div>
+            {% endfor %}
+        </div>
+      <p>
+        <a href="{{ url_for('projects') }}">
+          <button class="btn">Go Back</button>
+        </a>
+      </p>
     </div>
-</footer>
-<script>
-    function resetForm() {
-        const form = document.getElementById("pathForm");
-        form.reset();
-    }
-</script>
+</section>
+
+
+
+
+    <footer class="footer-section">
+        <div class="container text-center text-white py-2">
+            &copy; 2023 Group I BSCpE 2-6 | All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>

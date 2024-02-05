@@ -1,4 +1,5 @@
 import timeit
+import random
 from flask import Flask, request, jsonify, render_template
 from linear_search import linear_search
 from binary_search import binary_search
@@ -11,6 +12,8 @@ from stack_operations import infixToPostfix
 from queue1 import Queue
 from hash_table import HashTable
 from trainstation import Graph, shortest_path
+from flask import redirect, url_for
+
 
 
 
@@ -380,25 +383,6 @@ def process_commands():
 
     return render_template('hash_table.html', table="")
 
-@app.route('/train_locator', methods=['GET', 'POST'])
-def train_locator():
-    global train_network
-
-    if request.method == 'POST':
-        start_station = request.form['start_station']
-        end_station = request.form['end_station']
-        shortest_path_taken, num_stations_traveled = shortest_path(train_network.graph, start_station, end_station)
-
-        return render_template('train_locator.html',
-                               start_station=start_station,
-                               end_station=end_station,
-                               shortest_path_taken=shortest_path_taken,
-                               num_stations_traveled=num_stations_traveled,
-                               stations=sorted(train_network.graph.keys()),
-                               train_network=train_network)
-
-    stations = sorted(train_network.graph.keys())
-    return render_template('train_locator.html', stations=stations, train_network=train_network)
 
 train_network = Graph()
 
@@ -456,15 +440,152 @@ train_network.add_edge("Doroteo Jose", "Recto", 1)
 train_network.add_edge("EDSA", "Taft Avenue", 1)
 train_network.add_edge("Araneta-Cubao", "Araneta-Cubao", 1)
 
-# Example usage
-start_station = "5th Avenue"
-end_station = "Araneta-Cubao"
-shortest_path_taken, num_stations_traveled = shortest_path(train_network.graph, start_station, end_station)
+
+@app.route('/train_locator')
+def train_locator():
+    stations = get_all_stations()
+    return render_template('train_locator.html', stations=stations)
+
+@app.route('/calculate_path', methods=['POST'])
+def calculate_path():
+    start_station = request.form.get('start_station')
+    end_station = request.form.get('end_station')
+
+    shortest_path_taken, num_stations_traveled = shortest_path(train_network.graph, start_station, end_station)
+
+    return render_template('train_locator.html', 
+                           stations=get_all_stations(),
+                           shortest_path_taken=shortest_path_taken,
+                           num_stations_traveled=num_stations_traveled)
+
+def get_all_stations():
+    # Extract all unique station names from the graph
+    stations = set(station for connected_stations in train_network.graph.values() for station, _ in connected_stations)
+    return sorted(stations)
 
 
-print(f"Shortest distance from {start_station} on to {end_station} on : {shortest_path_taken}")
-print(f"Total number of stations traveled: {num_stations_traveled}")
+
+def generate_random_list(number_of_elements):
+    return [random.randint(1, 100) for _ in range(number_of_elements)]
+
+def selection_sort(arr):
+    for i in range(0, len(arr) - 1):
+        minimum_index = i
+        for j in range(i + 1, len(arr)):
+            if arr[j] < arr[minimum_index]:
+                minimum_index = j
+        arr[i], arr[minimum_index] = arr[minimum_index], arr[i]
+    return arr
 
 
-if __name__ == "__main__":
+def bubble_sort(arr):
+    for i in range(len(arr)):
+        for j in range(0, len(arr) - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+
+def merge_sort(arr):
+    def merge(left, right):
+        result = []
+        i = j = 0
+
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                result.append(left[i])
+                i += 1
+            else:
+                result.append(right[j])
+                j += 1
+
+        result.extend(left[i:])
+        result.extend(right[j:])
+        return result
+
+    if len(arr) <= 1:
+        return arr
+
+    mid = len(arr) // 2
+    left = arr[:mid]
+    right = arr[mid:]
+
+    left = merge_sort(left)
+    right = merge_sort(right)
+
+    return merge(left, right)
+
+
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr.pop()
+
+    left = []
+    right = []
+
+    for element in arr:
+        if element < pivot:
+            left.append(element)
+        else:
+            right.append(element)
+
+    return quick_sort(left) + [pivot] + quick_sort(right)
+
+
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+    return arr
+
+
+def measure_time(sort_func, arr):
+    time_taken = timeit.timeit(lambda: sort_func(arr.copy()), number=1)
+    return time_taken * 1000
+
+
+@app.route('/sorting_algo', methods=['GET', 'POST'])
+def sorting_algo():
+    number_of_elements = None
+    if request.method == 'POST':
+        number_of_elements = int(request.form['number_of_elements'])
+    return render_template('sorting_algo.html', number_of_elements=number_of_elements)
+
+
+@app.route('/sort', methods=['POST'])
+def sort():
+    number_list = [int(num) for num in request.form['input_numbers'].split(',')]
+    sort_algorithm = request.form['sort_algorithm']
+
+
+    sort_function = None
+    if sort_algorithm == 'selection_sort':
+        sort_function = selection_sort
+    elif sort_algorithm == 'bubble_sort':
+        sort_function = bubble_sort
+    elif sort_algorithm == 'merge_sort':
+        sort_function = merge_sort
+    elif sort_algorithm == 'quick_sort':
+        sort_function = quick_sort
+    elif sort_algorithm == 'insertion_sort':
+        sort_function = insertion_sort
+
+    if sort_function is None:
+        # Handle unrecognized algorithm
+        return render_template('error.html', message='Invalid algorithm')
+
+    time_taken = measure_time(sort_function, number_list)
+    sorted_numbers = sort_function(number_list.copy())
+
+    return render_template('sorting_algo.html', input_numbers=number_list, sorted_numbers=sorted_numbers, time_taken=time_taken, algorithm=sort_algorithm)
+
+
+if __name__ == '__main__':
     app.run(debug=True)

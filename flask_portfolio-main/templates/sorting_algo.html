@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://icons8.com/">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Sorting Algorithm Application</title>
+    <style>
+
+      * {
+        font-family: 'Libre Baskerville', serif;
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #ffffff;
+      }
+
+      .navbar-logo {
+        margin-left: 50px;
+        height:50px; 
+      }
+
+      .navbar-nav {
+        padding-left: 700px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .navbar-nav .nav-item {
+        text-align: center; 
+      }
+
+      .navbar-nav .nav-item .nav-link {
+        text-transform: uppercase;
+        color: #ffffff; 
+      }
+
+      .navbar {
+        background-color: #000000; 
+        position:fixed;
+        z-index: 101;
+        padding-right: 400px;
+      }
+
+      @media (max-width: 767.98px) {
+        .navbar-collapse {
+            padding-left: 0 !important; 
+        }
+      }
+
+      /* Styling for the cover photo */
+      .cover-photo {
+        background-image: url('/static/sort-algo.png'); 
+        background-size: cover;
+        background-position: center;
+        height: 200px; 
+        position: relative;
+      }
+
+      .cov-phot {
+        padding-top: 66px;
+      }
+
+      
+      .intro-section {
+        font-size: 15px;
+        padding: 50px;
+        padding-bottom: 0px;
+        text-align: center;
+      }
+
+      .intro-title {
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .intro-description {
+        padding-left: 100px;
+        padding-right: 100px;
+      }
+
+      .form-control {
+        background-color: #000000;
+        color: #EAE1DA;
+      }
+
+      .container {
+        background-color: #eae1dab1;
+        margin-right: 150px;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        padding-top: 10px;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+        position:sticky;
+        top: 50px;
+        border: 2px solid #000000; 
+      }
+
+      select {
+        background-color: #000000;
+        color: #ffffff;
+        font-weight: 400;
+      }
+
+      .btn1 {
+        top: 49%;
+        left: 20%;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        position:absolute;
+        background-color: #000000;
+        color:#EAE1DA;
+      }
+
+      .btn1:before {
+        content: "";
+        position:absolute;
+        top: 4px; 
+        right: 4px;
+        bottom: 4px; 
+        left: 4px; 
+        border: 1px solid #EAE1DA; 
+      }
+
+      .btn1:hover {
+        opacity: 0.5;
+      }
+
+  
+      .btn2 {
+        top: 50%;
+        left: 5%;
+        padding: 10px 20px;
+        font-size: 15px;
+        text-align: center;
+        text-decoration: none;
+        position:absolute;
+        background-color: #000000;
+        color:#EAE1DA;
+      }
+
+      .btn2:before {
+        content: "";
+        position:absolute;
+        top: 4px; 
+        right: 4px;
+        bottom: 4px; 
+        left: 4px; 
+        border: 1px solid #EAE1DA; 
+      }
+
+      .btn2:hover {
+        opacity: 0.5;
+      }
+
+      .alert {
+        background-color: #000000;
+        color: #66696c;
+        font-weight: 400;
+      }
+
+      .footer-section {
+        background-color: #000000;
+      }
+
+      .footer-section p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand navbar-logo" href=""><img src="/static/logo.png"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                  <a class="nav-link" href="{{ url_for('home')}}">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('projects')}}">Projects</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('profile')}}">Profiles</a>
+              </li>
+          </ul>
+      </div>
+    </nav>
+  
+
+  <section class="cov-phot"> <div class="cover-photo"></div></section>
+
+
+
+    <div class="container">
+          <form action="{{ url_for('sort') }}" method="post">
+            <label for="input_numbers">Enter List of Numbers (comma-separated):</label>
+            <textarea name="input_numbers" id="input_numbers" required></textarea>
+            <br>
+
+            <label for="sort_algorithm" class="form-label">Select Sorting Algorithm:</label>
+            <select id="sort_algorithm" name="sort_algorithm">
+                <option value="selection_sort">Selection Sort</option>
+                <option value="bubble_sort">Bubble Sort</option>
+                <option value="merge_sort">Merge Sort</option>
+                <option value="quick_sort">Quick Sort</option>
+                <option value="insertion_sort">Insertion Sort</option>
+            </select>
+        
+            <button type="submit" class="btn1">Submit</button>
+        </form>
+    
+        {% if sorted_numbers %}
+        <p>Sorted Elements: {{ sorted_numbers }}</p>
+        <p>Time taken: {{ time_taken }} milliseconds</p>
+        <p>Algorithm used: {{ algorithm }}</p>
+        {% endif %}
+      <p>
+        <a href="{{ url_for('projects') }}">
+          <button class="btn2">Go Back</button>
+        </a>
+      </p>
+    </div>
+
+    <footer class="footer-section">
+      <div class="text-center text-white py-2">
+          &copy; 2023 Group I BSCpE 2-6 | All rights reserved.
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
